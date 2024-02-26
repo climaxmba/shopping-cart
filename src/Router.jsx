@@ -1,8 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import Profile from "./Profile";
 import ErrorPage from "./ErrorPage";
-import Items from "./Items";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -12,20 +10,17 @@ const Router = () => {
       errorElement: <ErrorPage />,
     },
     {
-      path: "profile/",
-      element: <Profile />,
+      path: "search/",
+      element: <Search />,
     },
     {
-      path: "profile/:name",
-      element: <Profile />,
+      path: "saerch/:name",
+      element: <Search />,
     },
     {
-      path: "items/",
-      element: <Items />,
-    },
-    {
-      path: "items/:item",
-      element: <Items />,
+      path: "categories/",
+      element: <Categories />,
+      children: [<Category />]
     },
   ]);
 
