@@ -1,7 +1,18 @@
 /* eslint-disable react/prop-types */
 
-export default function Button({ text, fill = true }) {
+export default function Button({
+  text,
+  onClick = null,
+  type = "button",
+  fill = true,
+}) {
   return (
-    <button className={`${fill ? "btn-fill" : "btn-outline"}`}>{text}</button>
+    <button
+      type={type}
+      onClick={onClick}
+      className={`${fill ? "btn-fill" : "btn-outline"}`}
+    >
+      {text}
+    </button>
   );
 }
