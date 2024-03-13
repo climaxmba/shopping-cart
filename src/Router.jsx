@@ -6,6 +6,8 @@ import Categories from "./pages/Categories";
 import Home from "./pages/Home"
 import ErrorPage from "./ErrorPage";
 
+import "./index.css"
+
 const Router = () => {
   const router = createBrowserRouter([
     {

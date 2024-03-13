@@ -20,12 +20,12 @@ function SignUp() {
       </div>
 
       <div>
-        <label htmlFor="signupEmail">Email</label>
+        <label htmlFor="signupEmail">Email:</label>
         <input type="email" name="signupEmail" id="signupEmail" />
       </div>
 
       <div>
-        <label htmlFor="signupPassword">Password</label>
+        <label htmlFor="signupPassword">Password:</label>
         <input type="password" name="signupPassword" id="signupPassword" />
       </div>
 
@@ -65,9 +65,10 @@ function SignIn() {
 function Auth({ tab }) {
   return (
     <div className={styles.auth}>
-      <div>
-        <Link to="/account/signin">Sign In</Link>
-        <Link to="/account/signup">Sign Up</Link>
+      <div className={styles.authTabs}>
+        <Link className={tab === "signin" && styles.currTab} to="/account/signin">Sign In</Link>
+        |
+        <Link className={tab === "signup" && styles.currTab} to="/account/signup">Sign Up</Link>
       </div>
 
       <div>
@@ -101,6 +102,8 @@ function Details() {
         <div>Address</div>
         <div>{"Address"}</div>
       </div>
+
+      <Button text="Log out" />
     </div>
   );
 }
