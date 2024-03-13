@@ -1,5 +1,5 @@
 function Categories() {
-    return <></>;
+    return <div></div>;
   }
   
   export default Categories;

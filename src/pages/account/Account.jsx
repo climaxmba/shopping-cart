@@ -1,0 +1,108 @@
+/* eslint-disable react/prop-types */
+import { Link, useParams } from "react-router-dom";
+import Button from "../../components/Button";
+import styles from "./account.module.css";
+
+function Account() {
+  const { name } = useParams(); console.log(name);
+  return <div>
+    {/* NavBar */}
+    {name ? <Auth tab={name} /> : <Details />}
+  </div>;
+}
+
+function SignUp() {
+  return (
+    <form action="#">
+      <div>
+        <label htmlFor="signupName">Name:</label>
+        <input type="text" name="signupName" id="signupName" />
+      </div>
+
+      <div>
+        <label htmlFor="signupEmail">Email</label>
+        <input type="email" name="signupEmail" id="signupEmail" />
+      </div>
+
+      <div>
+        <label htmlFor="signupPassword">Password</label>
+        <input type="password" name="signupPassword" id="signupPassword" />
+      </div>
+
+      <div>
+        <label htmlFor="signupPhone">Phone:</label>
+        <input type="password" name="signupPhone" id="signupPhone" />
+      </div>
+
+      <div>
+        <label htmlFor="signupAddress">Address:</label>
+        <input type="password" name="signupAddress" id="signupAddress" />
+      </div>
+
+      <Button type="submit" text="Sign Up" />
+    </form>
+  );
+}
+
+function SignIn() {
+  return (
+    <form action="#">
+      <div>
+        <label htmlFor="loginEmail">Email:</label>
+        <input type="email" name="loginEmail" id="loginEmail" />
+      </div>
+
+      <div>
+        <label htmlFor="loginPassword">Password:</label>
+        <input type="password" name="loginPassword" id="loginPassword" />
+      </div>
+
+      <Button type="submit" text="Sign In" />
+    </form>
+  );
+}
+
+function Auth({ tab }) {
+  return (
+    <div className={styles.auth}>
+      <div>
+        <Link to="/account/signin">Sign In</Link>
+        <Link to="/account/signup">Sign Up</Link>
+      </div>
+
+      <div>
+        {tab === "signin" ? <SignIn /> : <SignUp /> }
+      </div>
+    </div>
+  );
+}
+
+function Details() {
+  return (
+    <div className={styles.details}>
+      <h1 className={styles.heading}>Account</h1>
+
+      <div className={styles.field}>
+        <div>Name</div>
+        <div>{"Name"}</div>
+      </div>
+
+      <div className={styles.field}>
+        <div>Email</div>
+        <div>{"Email"}</div>
+      </div>
+
+      <div className={styles.field}>
+        <div>Phone number</div>
+        <div>{"Phone"}</div>
+      </div>
+
+      <div className={styles.field}>
+        <div>Address</div>
+        <div>{"Address"}</div>
+      </div>
+    </div>
+  );
+}
+
+export default Account;

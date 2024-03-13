@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import Account from "./pages/Account";
+import Account from "./pages/account/Account";
 import Cart from "./pages/Cart"
 import Categories from "./pages/Categories";
 import Home from "./pages/Home"
@@ -22,7 +22,11 @@ const Router = () => {
     //   element: <Search />,
     // },
     {
-      path: "account/",
+      path: "account",
+      element: <Account />,
+    },
+    {
+      path: "account/:name",
       element: <Account />,
     },
     {
