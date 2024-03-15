@@ -20,9 +20,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -48,6 +45,38 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+main {
+  display: flex;
+  min-height: 100vh;
+}
+
+#menu-sectn {
+  flex: 0 0 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 1rem;
+  font-size: xx-large;
+  background-color: antiquewhite;
+}
+
+#outlet-sectn {
+  flex: 1 0 300px;
+}
+
+@media screen and (width < 680px) {
+  #menu-sectn {
+    font-size: medium;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -1px 3px 2px #00000020;
+  }
 }
 
 /* @media (prefers-color-scheme: light) {
