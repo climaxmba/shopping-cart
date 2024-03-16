@@ -1,0 +1,29 @@
+button {
+  --themecolor: darkorange;
+  --fgcolor: white;
+}
+
+.fill,
+.outline {
+  padding: 8px 3px;
+  outline: none;
+  border: none;
+  font-size: small;
+}
+
+.fill {
+  background-color: var(--themecolor);
+  color: var(--fgcolor);
+}
+
+.outline {
+  background-color: var(--fgcolor);
+  color: var(--themecolor);
+}
+
+@media screen and (width > 680px) {
+  .fill,
+  .outline {
+    font-size: medium;
+  }
+}

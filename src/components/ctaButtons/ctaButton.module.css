@@ -1,0 +1,13 @@
+.ctaContainer {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.ctaContainer button {
+  flex: 1 0 100px;
+}
+
+.ctaContainer > *:last-child {
+  flex: 0 0 30px;
+}

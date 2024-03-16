@@ -1,0 +1,38 @@
+.containerLandscape, .containerPortrait {
+  display: flex;
+  background-color: aquamarine;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px 1px #00000020;
+}
+
+.containerLandscape .imgContainer, .containerPortrait .imgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  background-color: white;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.containerPortrait {
+  flex-direction: column;
+}
+
+.containerPortrait > div:not(.imgContainer) {
+  padding: 0.5rem 0.3rem;
+}
+
+.containerLandscape .imgContainer {
+  flex: 1 0 100px;
+}
+
+.containerPortrait .imgContainer {
+  height: 120px;
+}
+
+.productName {
+  font-size: large;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}

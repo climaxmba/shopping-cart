@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import styles from "./button.module.css"
 
 export default function Button({
   text,
@@ -10,7 +11,7 @@ export default function Button({
     <button
       type={type}
       onClick={onClick}
-      className={`${fill ? "btn-fill" : "btn-outline"}`}
+      className={fill ? styles.fill : styles.outline}
     >
       {text}
     </button>
