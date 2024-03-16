@@ -7,6 +7,9 @@ import ErrorPage from "./ErrorPage";
 
 import "./index.css";
 import RootLayout from "./RootLayout";
+import ProductsList from "./pages/productsList/ProductsList";
+import ProductDetails from "./components/productDetails/ProductDetails";
+import ShopItem from "./components/shopItem/ShopItem";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -34,6 +37,27 @@ const Router = () => {
           <Account />
         </RootLayout>
       ),
+    },
+    {
+      path: "products",
+      element: (
+        <RootLayout>
+          <ProductsList>
+            <ShopItem />
+            <ShopItem />
+            <ShopItem />
+            <ShopItem />
+            <ShopItem />
+            <ShopItem />
+          </ProductsList>
+        </RootLayout>
+      ),
+      children: [
+        {
+          path: ":productId",
+          element: <ProductDetails />,
+        },
+      ],
     },
     {
       path: "cart/",

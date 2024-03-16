@@ -1,12 +1,21 @@
 .container {
+  display: flex;
+}
+
+.productsList {
+  flex: 1 1 auto;
   display: grid;
   gap: 8px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   padding: 1rem 1.5rem;
 }
 
+.productDetails {
+  flex: 0 0 300px;
+}
+
 @media screen and (width > 600px) {
-  .container {
+  .productsList {
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
