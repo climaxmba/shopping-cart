@@ -6,3 +6,11 @@
   padding: 1rem;
   box-shadow: 0 1px 3px 2px #00000020;
 }
+
+@media screen and (width < 680px) {
+  .menuIcon {
+    /* Hide, but keep it present to keep the logo in the center */
+    pointer-events: none;
+    opacity: 0;
+  }
+}
