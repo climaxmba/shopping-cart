@@ -1,30 +1,49 @@
-.containerLandscape, .containerPortrait {
+.containerDetailed,
+.containerPortrait {
   display: flex;
+  flex-direction: column;
   background-color: aquamarine;
+}
+
+.containerDetailed {
+  border-radius: 8px;
+}
+
+.containerPortrait {
   border-radius: 8px;
   box-shadow: 0 1px 5px 1px #00000020;
 }
 
-.containerLandscape .imgContainer, .containerPortrait .imgContainer {
+.containerDetailed .imgContainer,
+.containerPortrait .imgContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   align-self: stretch;
   background-color: white;
+}
+
+.containerDetailed .imgContainer {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.containerPortrait .imgContainer {
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
 }
 
-.containerPortrait {
-  flex-direction: column;
-}
-
-.containerPortrait > div:not(.imgContainer) {
+.containerPortrait>div:not(.imgContainer),
+.containerDetailed>div:not(.imgContainer) {
   padding: 0.5rem 0.3rem;
 }
 
-.containerLandscape .imgContainer {
-  flex: 1 0 100px;
+.containerDetailed>div:not(.imgContainer) {
+  flex: 1;
+}
+
+.containerDetailed .imgContainer {
+  flex: 0 0 150px;
 }
 
 .containerPortrait .imgContainer {
@@ -32,7 +51,10 @@
 }
 
 .productName {
+  font-size: medium;
+}
+
+.price {
   font-size: large;
   font-weight: 500;
-  margin-bottom: 0.5rem;
 }

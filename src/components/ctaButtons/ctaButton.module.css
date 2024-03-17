@@ -11,3 +11,11 @@
 .ctaContainer > *:last-child {
   flex: 0 0 30px;
 }
+
+.addToCart {
+  display: block;
+  color: white;
+  background-color: darkorange;
+  width: 100%;
+  text-align: center;
+}

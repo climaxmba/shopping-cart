@@ -6,7 +6,7 @@ export default function ProductsList({ children }) {
   const { productId } = useParams();
   return (
     <div className={styles.container}>
-      <div className={styles.productsList}>{children}</div>
+      <div className={productId ? styles.collapsableProductsList : styles.productsList}>{children}</div>
       {productId && (
         <div className={styles.productDetails}>
           <Outlet />

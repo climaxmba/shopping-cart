@@ -1,1 +1,13 @@
+.container {
+  padding: 0.5rem;
+}
 
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.description h2 {
+  margin: 0;
+}
