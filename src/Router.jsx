@@ -10,13 +10,21 @@ import RootLayout from "./RootLayout";
 import ProductsList from "./pages/productsList/ProductsList";
 import ProductDetails from "./components/productDetails/ProductDetails";
 import ShopItem from "./components/shopItem/ShopItem";
+import { useState } from "react";
 
 const Router = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const menuStates = {
+    menuOpen,
+    setMenuOpen
+  };
+
   const router = createBrowserRouter([
     {
       path: "/",
       element: (
-        <RootLayout>
+        <RootLayout menuStates={menuStates}>
           <App />
         </RootLayout>
       ),
@@ -25,7 +33,7 @@ const Router = () => {
     {
       path: "account",
       element: (
-        <RootLayout>
+        <RootLayout menuStates={menuStates}>
           <Account />
         </RootLayout>
       ),
@@ -33,7 +41,7 @@ const Router = () => {
     {
       path: "account/:name",
       element: (
-        <RootLayout>
+        <RootLayout menuStates={menuStates}>
           <Account />
         </RootLayout>
       ),
@@ -41,7 +49,7 @@ const Router = () => {
     {
       path: "products",
       element: (
-        <RootLayout>
+        <RootLayout menuStates={menuStates}>
           <ProductsList>
             <ShopItem />
             <ShopItem />
@@ -62,7 +70,7 @@ const Router = () => {
     {
       path: "cart/",
       element: (
-        <RootLayout>
+        <RootLayout menuStates={menuStates}>
           <Cart />
         </RootLayout>
       ),
@@ -70,7 +78,7 @@ const Router = () => {
     {
       path: "categories/",
       element: (
-        <RootLayout>
+        <RootLayout menuStates={menuStates}>
           <Categories />
         </RootLayout>
       ),

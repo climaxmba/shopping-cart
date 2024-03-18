@@ -14,6 +14,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -39,9 +40,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -59,7 +62,6 @@ main {
   gap: 1.6rem;
   padding: 1rem;
   font-size: x-large;
-  background-color: antiquewhite;
 }
 
 #menu-sectn .navlink {
@@ -67,6 +69,13 @@ main {
   gap: 8px;
   align-items: center;
   color: currentColor;
+  padding: 8px 12px;
+  border-radius: 8px;
+  animation: move 0.5s ease-in-out;
+}
+
+#menu-sectn .navlink:hover {
+  box-shadow: 0 1px 3px 2px #00000020;
 }
 
 #menu-sectn .navlink svg {
@@ -88,16 +97,34 @@ main {
     width: 100%;
     box-shadow: 0 -1px 3px 2px #00000020;
     z-index: 2;
+    background-color: white;
   }
 
   #menu-sectn .navlink {
     flex-direction: column;
+    padding: 0;
+    border-radius: 0;
     gap: 0;
+    animation: none;
+  }
+
+  #menu-sectn .navlink:hover {
+    box-shadow: none;
   }
 
   main {
     margin-bottom: 3rem;
     z-index: 1;
+  }
+}
+
+@keyframes move {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
   }
 }
 

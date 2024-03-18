@@ -16,10 +16,5 @@
 
 .navBar svg {
   width: 1.25rem;
-}
-
-@media screen and (width < 680px) {
-  .menuIcon {
-    visibility: hidden;
-  }
+  cursor: pointer;
 }

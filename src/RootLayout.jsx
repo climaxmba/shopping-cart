@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
 import Icon from "@mdi/react";
@@ -23,16 +24,14 @@ function Menu() {
       <NavLink className="navlink" to="/categories">
         {({ isActive }) => (
           <>
-            <Icon path={isActive ? mdiShape : mdiShapeOutline} />{" "}
-            Categories
+            <Icon path={isActive ? mdiShape : mdiShapeOutline} /> Categories
           </>
         )}
       </NavLink>
       <NavLink className="navlink" to="/account">
         {({ isActive }) => (
           <>
-            <Icon path={isActive ? mdiAccount : mdiAccountOutline} />{" "}
-            Account
+            <Icon path={isActive ? mdiAccount : mdiAccountOutline} /> Account
           </>
         )}
       </NavLink>
@@ -40,21 +39,19 @@ function Menu() {
   );
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, menuStates }) {
   return (
     <>
-      <NavBar />
+      <NavBar setMenuOpen={menuStates.setMenuOpen} />
       <main>
-        <section id="menu-sectn">
-          <Menu />
-        </section>
+        {menuStates.menuOpen && (
+          <section id="menu-sectn">
+            <Menu />
+          </section>
+        )}
         <section id="outlet-sectn">{children}</section>
       </main>
       {/* footer */}
     </>
   );
 }
-
-RootLayout.propTypes = {
-  children: function () {},
-};
