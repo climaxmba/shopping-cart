@@ -76,6 +76,12 @@ main {
     bottom: 0;
     width: 100%;
     box-shadow: 0 -1px 3px 2px #00000020;
+    z-index: 2;
+  }
+
+  main {
+    margin-bottom: 3rem;
+    z-index: 1;
   }
 }
 

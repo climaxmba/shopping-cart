@@ -2,6 +2,7 @@
   display: flex;
   padding: 1rem;
   gap: 0.8rem;
+  container: products-sectn / inline-size;
 }
 
 .productsList,
@@ -14,8 +15,6 @@
 
 .productDetails {
   flex: 0 0 380px;
-  border-radius: 12px;
-  background-color: aliceblue;
 }
 
 @media screen and (width > 600px) {
@@ -25,6 +24,12 @@
 }
 
 @media screen and (width < 680px) {
+  .productDetails {
+    flex: 1;
+  }
+}
+
+@container products-sectn (width < 580px) {
   .collapsableProductsList {
     display: none;
   }
