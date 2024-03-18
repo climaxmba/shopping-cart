@@ -1,11 +1,13 @@
+import Icon from "@mdi/react";
 import styles from "./ctaButton.module.css";
+import { mdiHeartOutline } from "@mdi/js";
 
 // Props: { addToCart, incrementQuantity, decrementQuantity, like, unLike }
 export default function CTAButtons() {
   return (
     <div className={styles.ctaContainer}>
       <AddToCart />
-      <span>Like</span>
+      <Icon path={mdiHeartOutline} />
     </div>
   );
 }

@@ -1,5 +1,44 @@
 import { NavLink } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
+import Icon from "@mdi/react";
+import {
+  mdiAccount,
+  mdiAccountOutline,
+  mdiHome,
+  mdiHomeOutline,
+  mdiShape,
+  mdiShapeOutline,
+} from "@mdi/js";
+
+function Menu() {
+  return (
+    <>
+      <NavLink className="navlink" to="/">
+        {({ isActive }) => (
+          <>
+            <Icon path={isActive ? mdiHome : mdiHomeOutline} /> Home
+          </>
+        )}
+      </NavLink>
+      <NavLink className="navlink" to="/categories">
+        {({ isActive }) => (
+          <>
+            <Icon path={isActive ? mdiShape : mdiShapeOutline} />{" "}
+            Categories
+          </>
+        )}
+      </NavLink>
+      <NavLink className="navlink" to="/account">
+        {({ isActive }) => (
+          <>
+            <Icon path={isActive ? mdiAccount : mdiAccountOutline} />{" "}
+            Account
+          </>
+        )}
+      </NavLink>
+    </>
+  );
+}
 
 export default function RootLayout({ children }) {
   return (
@@ -7,9 +46,7 @@ export default function RootLayout({ children }) {
       <NavBar />
       <main>
         <section id="menu-sectn">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/categories">Categories</NavLink>
-            <NavLink to="/account">Account</NavLink>
+          <Menu />
         </section>
         <section id="outlet-sectn">{children}</section>
       </main>
@@ -19,5 +56,5 @@ export default function RootLayout({ children }) {
 }
 
 RootLayout.propTypes = {
-  children: function() {},
+  children: function () {},
 };

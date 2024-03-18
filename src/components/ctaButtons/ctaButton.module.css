@@ -9,7 +9,7 @@
 }
 
 .ctaContainer > *:last-child {
-  flex: 0 0 30px;
+  flex: 0 0 1.5rem;
 }
 
 .addToCart {
