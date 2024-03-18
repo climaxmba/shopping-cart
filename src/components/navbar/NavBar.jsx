@@ -7,7 +7,7 @@ import styles from "./navbar.module.css";
 export default function NavBar() {
   return (
     <nav className={styles.navBar}>
-      <Icon className={styles.menuIcon} size={1} path={mdiMenu} />
+      <Icon className={styles.menuIcon} path={mdiMenu} />
       <Link to="/">
         <Icon path={mdiStore} /> Logo
       </Link>
