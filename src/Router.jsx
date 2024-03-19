@@ -2,14 +2,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./pages/App";
 import Account from "./pages/account/Account";
 import Cart from "./pages/Cart";
-import Categories from "./pages/Categories";
+import Categories from "./pages/categories/Categories";
 import ErrorPage from "./ErrorPage";
-
-import "./index.css";
-import RootLayout from "./RootLayout";
 import ProductsList from "./pages/productsList/ProductsList";
 import ProductDetails from "./components/productDetails/ProductDetails";
 import ShopItem from "./components/shopItem/ShopItem";
+import RootLayout from "./RootLayout";
+
+import "./index.css";
 import { useState } from "react";
 
 const Router = () => {
@@ -76,7 +76,15 @@ const Router = () => {
       ),
     },
     {
-      path: "categories/",
+      path: "categories",
+      element: (
+        <RootLayout menuStates={menuStates}>
+          <Categories />
+        </RootLayout>
+      ),
+    },
+    {
+      path: "categories/:category",
       element: (
         <RootLayout menuStates={menuStates}>
           <Categories />
