@@ -1,13 +1,15 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProductsList from "../productsList/ProductsList";
 import ShopItem from "../../components/shopItem/ShopItem";
 
+import styles from "./categories.module.css";
+
 function CategoryList() {
   return (
-    <ul>
-      <li>Clothes</li>
-      <li>Jewelries</li>
-      <li>Items</li>
+    <ul className={styles.categoryList}>
+      <li><Link to="category">Clothes</Link></li>
+      <li><Link to="category">Jewelries</Link></li>
+      <li><Link to="category">Items</Link></li>
     </ul>
   );
 }
@@ -15,8 +17,8 @@ function CategoryList() {
 function Categories() {
   const { category } = useParams();
   return (
-    <div>
-      <h2>Categories {category && `| ${category}`}</h2>
+    <div className={styles.container}>
+      <h2 className={styles.heading}>Categories {category && `| ${category}`}</h2>
       {category ? (
         <ProductsList>
           <ShopItem />
