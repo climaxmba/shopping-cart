@@ -18,3 +18,16 @@
   width: 1.25rem;
   cursor: pointer;
 }
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu > * {
+  width: 36px;
+  height: 4px;
+  background-color: black;
+  border-radius: 6px;
+}
