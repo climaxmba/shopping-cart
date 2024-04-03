@@ -23,11 +23,31 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  position: relative;
 
   & > * {
-    width: 36px;
-    height: 4px;
+    width: 32px;
+    height: 3px;
     background-color: black;
     border-radius: 6px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &.menuOpen {
+    & > * {
+      position: absolute;
+    }
+
+    & > :first-child {
+      transform: rotate(45deg);
+    }
+
+    & > :nth-child(2) {
+      display: none;
+    }
+
+    & > :last-child {
+      transform: rotate(-45deg);
+    }
   }
 }

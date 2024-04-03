@@ -5,11 +5,11 @@ import { Link, NavLink } from "react-router-dom";
 
 import styles from "./navbar.module.scss";
 
-export default function NavBar({ setMenuOpen }) {
+export default function NavBar({ setMenuOpen, menuOpen }) {
   const handleMenuClick = () => setMenuOpen((val) => !val);
   return (
     <nav className={styles.navBar}>
-      <span title="Menu" className={styles.menu} onClick={handleMenuClick}>
+      <span title="Menu" className={`${styles.menu} ${menuOpen && styles.menuOpen}`} onClick={handleMenuClick}>
         <span></span>
         <span></span>
         <span></span>

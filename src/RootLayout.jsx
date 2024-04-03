@@ -42,7 +42,7 @@ function Menu() {
 export default function RootLayout({ children, menuStates }) {
   return (
     <>
-      <NavBar setMenuOpen={menuStates.setMenuOpen} />
+      <NavBar setMenuOpen={menuStates.setMenuOpen} menuOpen={menuStates.menuOpen} />
       <main>
         {menuStates.menuOpen && (
           <section id="menu-sectn">
