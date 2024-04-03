@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import CTAButtons, { AddToCart } from "../ctaButtons/CTAButtons";
 
-import styles from "./shopItem.module.css";
+import styles from "./shopItem.module.scss";
 
 export default function ShopItem() {
   return (

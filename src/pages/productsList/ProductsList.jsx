@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Outlet, useParams } from "react-router-dom";
-import styles from "./productsList.module.css";
+import styles from "./productsList.module.scss";
 
 export default function ProductsList({ children }) {
   const { productId } = useParams();

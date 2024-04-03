@@ -3,7 +3,7 @@ import Icon from "@mdi/react";
 import { mdiCart, mdiCartOutline, mdiStore } from "@mdi/js";
 import { Link, NavLink } from "react-router-dom";
 
-import styles from "./navbar.module.css";
+import styles from "./navbar.module.scss";
 
 export default function NavBar({ setMenuOpen }) {
   const handleMenuClick = () => setMenuOpen((val) => !val);

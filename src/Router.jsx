@@ -9,7 +9,7 @@ import ProductDetails from "./components/productDetails/ProductDetails";
 import ShopItem from "./components/shopItem/ShopItem";
 import RootLayout from "./RootLayout";
 
-import "./index.css";
+import "./index.scss";
 import { useState } from "react";
 
 const Router = () => {

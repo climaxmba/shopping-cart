@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import ProductsList from "../productsList/ProductsList";
 import ShopItem from "../../components/shopItem/ShopItem";
 
-import styles from "./categories.module.css";
+import styles from "./categories.module.scss";
 
 function CategoryList() {
   return (

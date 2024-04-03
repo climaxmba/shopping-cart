@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import Button from "../components/button/Button";
 import { Link } from "react-router-dom";
 
-import styles from "./app.module.css";
+import styles from "./app.module.scss";
 
 function SlideItem({ para, btnText, btnUrl }) {
   return (

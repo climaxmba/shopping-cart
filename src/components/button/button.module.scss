@@ -1,0 +1,28 @@
+$themecolor: darkorange;
+$fgcolor: white;
+
+@mixin button {
+  padding: 8px 12px;
+  outline: none;
+  border: none;
+  font-size: small;
+}
+
+.fill {
+  @include button();
+  background-color: $themecolor;
+  color: $fgcolor;
+}
+
+.outline {
+  @include button();
+  background-color: $fgcolor;
+  color: $themecolor;
+}
+
+@media screen and (width > 680px) {
+  .fill,
+  .outline {
+    font-size: medium;
+  }
+}

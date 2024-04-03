@@ -1,16 +1,15 @@
 .ctaContainer {
   display: flex;
   align-items: center;
-}
 
-.ctaContainer button {
-  flex: 1 0 100px;
-}
+  button {
+    flex: 1 0 100px;
+  }
 
-/* Like icon */
-.ctaContainer > *:last-child {
-  flex: 0 0 1.25rem;
-  margin: 0 1rem;
+  & > *:last-child {
+    flex: 0 0 1.25rem;
+    margin: 0 1rem;
+  }
 }
 
 .addToCart {

@@ -1,5 +1,5 @@
 // import { useParams } from "react-router-dom";
-import styles from "./productDetails.module.css";
+import styles from "./productDetails.module.scss";
 import { ShopItemDetailed } from "../shopItem/ShopItem";
 
 export default function ProductDetails() {

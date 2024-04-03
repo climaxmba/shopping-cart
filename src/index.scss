@@ -13,10 +13,10 @@ a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
-}
 
-a:hover {
-  color: #535bf2;
+  &:hover {
+    color: #535bf2;
+  }
 }
 
 body {
@@ -39,15 +39,15 @@ button {
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
-}
 
-button:hover {
-  border-color: #646cff;
-}
+  &:hover {
+    border-color: #646cff;
+  }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
 }
 
 main {
@@ -62,24 +62,26 @@ main {
   gap: 1.6rem;
   padding: 1rem;
   font-size: x-large;
-}
 
-#menu-sectn .navlink {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  color: currentColor;
-  padding: 8px 12px;
-  border-radius: 8px;
-  animation: move 0.5s ease-in-out;
-}
+  .navlink {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: currentColor;
+    padding: 8px 12px;
+    border-radius: 8px;
+    animation: move 0.5s ease-in-out;
+  }
 
-#menu-sectn .navlink:hover {
-  box-shadow: 0 1px 3px 2px #00000020;
-}
+  .navlink {
+    &:hover {
+      box-shadow: 0 1px 3px 2px #00000020;
+    }
 
-#menu-sectn .navlink svg {
-  width: 1.5rem;
+    svg {
+      width: 1.5rem;
+    }
+  }
 }
 
 #outlet-sectn {
@@ -98,18 +100,18 @@ main {
     box-shadow: 0 -1px 3px 2px #00000020;
     z-index: 2;
     background-color: white;
-  }
 
-  #menu-sectn .navlink {
-    flex-direction: column;
-    padding: 0;
-    border-radius: 0;
-    gap: 0;
-    animation: none;
-  }
+    .navlink {
+      flex-direction: column;
+      padding: 0;
+      border-radius: 0;
+      gap: 0;
+      animation: none;
 
-  #menu-sectn .navlink:hover {
-    box-shadow: none;
+      &:hover {
+        box-shadow: none;
+      }
+    }
   }
 
   main {

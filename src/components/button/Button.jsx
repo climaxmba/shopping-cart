@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import styles from "./button.module.css"
+import styles from "./button.module.scss"
 
 export default function Button({
   text,

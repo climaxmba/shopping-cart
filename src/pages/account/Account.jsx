@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link, useParams } from "react-router-dom";
 import Button from "../../components/button/Button";
-import styles from "./account.module.css";
+import styles from "./account.module.scss";
 
 function Account() {
   const { name } = useParams(); console.log(name);
