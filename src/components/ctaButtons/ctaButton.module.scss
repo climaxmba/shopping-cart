@@ -1,3 +1,5 @@
+$theme-color: maroon;
+
 .ctaContainer {
   display: flex;
   align-items: center;
@@ -14,8 +16,35 @@
 
 .addToCart {
   display: block;
-  color: white;
-  background-color: darkorange;
+  color: $theme-color;
+  border: 2px solid $theme-color;
+  background-color: transparent;
   width: 100%;
   text-align: center;
+
+  &:hover {
+    background-color: lighten($color: $theme-color, $amount: 5%);
+    color: white;
+  }
+
+  &:active {
+    background-color: darken($color: $theme-color, $amount: 5%);
+  }
+}
+
+.homeButton {
+  padding: 8px 12px;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+
+  &:hover {
+    background-color: $theme-color;
+    border-color: $theme-color;
+  }
+
+  &:active {
+    background-color: darken($color: $theme-color, $amount: 3%);
+  }
 }

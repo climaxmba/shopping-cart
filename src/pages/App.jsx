@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import Button from "../components/button/Button";
+import { HomeButton } from "../components/ctaButtons/CTAButtons";
 import { Link } from "react-router-dom";
 
 import styles from "./app.module.scss";
@@ -11,7 +11,7 @@ function SlideItem({ para, btnText, btnUrl }) {
     <div className={styles.ctaContainer}>
       <p className={styles.text}>{para}</p>
       <Link to={btnUrl}>
-        <Button text={btnText} />
+        <HomeButton text={btnText} />
       </Link>
     </div>
   );

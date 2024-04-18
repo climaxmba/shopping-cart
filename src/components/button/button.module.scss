@@ -1,11 +1,11 @@
-$themecolor: darkorange;
+$themecolor: maroon;
 $fgcolor: white;
 
 @mixin button {
   padding: 8px 12px;
   outline: none;
-  border: none;
   font-size: small;
+  border: 2px solid $themecolor;
 }
 
 .fill {

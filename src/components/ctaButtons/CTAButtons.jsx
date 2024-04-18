@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Icon from "@mdi/react";
 import { mdiHeartOutline } from "@mdi/js";
 import styles from "./ctaButton.module.scss";
@@ -14,4 +15,17 @@ export default function CTAButtons() {
 
 export function AddToCart() {
   return <button type="button" className={styles.addToCart}>Add to Cart</button>
+}
+
+export function HomeButton({
+  text,
+}) {
+  return (
+    <button
+      type="button"
+      className={styles.homeButton}
+    >
+      {text}
+    </button>
+  );
 }

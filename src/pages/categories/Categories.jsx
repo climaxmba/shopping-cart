@@ -7,9 +7,9 @@ import styles from "./categories.module.scss";
 function CategoryList() {
   return (
     <ul className={styles.categoryList}>
-      <li><Link to="category">Clothes</Link></li>
-      <li><Link to="category">Jewelries</Link></li>
-      <li><Link to="category">Items</Link></li>
+      <li><Link to="clothes">Clothes</Link></li>
+      <li><Link to="jewelries">Jewelries</Link></li>
+      <li><Link to="items">Items</Link></li>
     </ul>
   );
 }

@@ -1,8 +1,9 @@
+$theme-rad: 4px;
+
 @mixin container {
   display: flex;
   flex-direction: column;
-  background-color: aquamarine;
-  border-radius: 8px;
+  border-radius: $theme-rad;
 }
 
 .containerDetailed {
@@ -36,9 +37,9 @@
   align-items: center;
   justify-content: center;
   align-self: stretch;
-  background-color: cornflowerblue;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
+  background-color: pink;
+  border-top-right-radius: $theme-rad;
+  border-top-left-radius: $theme-rad;
 }
 
 .productName {

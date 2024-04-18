@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import Button from "../../components/button/Button";
 import styles from "./account.module.scss";
 
 function Account() {
-  const { name } = useParams(); console.log(name);
+  const { name } = useParams();
   return <div>
     {/* NavBar */}
     {name ? <Auth tab={name} /> : <Details />}
@@ -39,7 +39,7 @@ function SignUp() {
         <input type="password" name="signupAddress" id="signupAddress" />
       </div>
 
-      <Button type="submit" text="Sign Up" />
+      <Button type="submit" text="Sign Up" fill />
     </form>
   );
 }
@@ -57,13 +57,13 @@ function SignIn() {
         <input type="password" name="loginPassword" id="loginPassword" />
       </div>
 
-      <Button type="submit" text="Sign In" />
+      <Button type="submit" text="Sign In" fill />
     </form>
   );
 }
 
-function Auth({ tab }) {
-  return (
+function Auth({ tab = "signin" }) {
+  return !(tab === "signin" || tab === "signup") ? <Navigate to={"/account/signin"} /> : (
     <div className={styles.auth}>
       <div className={styles.authTabs}>
         <Link className={tab === "signin" && styles.currTab} to="/account/signin">Sign In</Link>
@@ -103,7 +103,7 @@ function Details() {
         <div>{"Address"}</div>
       </div>
 
-      <Button text="Log out" />
+      <Button text="Log out" fill />
     </div>
   );
 }

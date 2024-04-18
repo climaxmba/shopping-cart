@@ -3,15 +3,17 @@ import styles from "./button.module.scss"
 
 export default function Button({
   text,
-  onClick = null,
+  onClick = undefined,
   type = "button",
-  fill = true,
+  fill = false,
+  style = undefined
 }) {
   return (
     <button
       type={type}
       onClick={onClick}
       className={fill ? styles.fill : styles.outline}
+      style={style}
     >
       {text}
     </button>
