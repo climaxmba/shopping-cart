@@ -9,8 +9,11 @@ import ProductDetails from "./components/productDetails/ProductDetails";
 import ShopItem from "./components/shopItem/ShopItem";
 import RootLayout from "./RootLayout";
 
+import { Provider } from "react-redux";
+
 import "./index.scss";
 import { useState } from "react";
+import { store } from "./_redux/store";
 
 const Router = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -93,7 +96,7 @@ const Router = () => {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return <Provider store={store}><RouterProvider router={router} /></Provider>;
 };
 
 export default Router;
