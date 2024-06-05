@@ -1,32 +1,39 @@
 import { createSlice } from "@reduxjs/toolkit";
+import storage from "../../modules/storage";
 
-const initialState = { value: { cart: [] } };
+const initialState = { value: storage.getCart() };
 
 const cartSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     addItem: (state, action) => {
-      // const cart = state.value.cart;
-      const item = action.payload;
-
-      // if !(item in cart)
-      state.value.cart.push(item);
+      const newCart = [...state.value, action.payload];
+      state.value = newCart;
+      storage.setCart(newCart);
     },
     getItem: (state, action) => {
-      return state.value.cart.filter((item) => item.id === action.payload);
+      return state.value.filter((item) => item.id === action.payload);
     },
     incrementItemQuantity: (state, action) => {
-      const cart = state.value.cart;
-      state.value.cart = cart.map((item) => {
-        item.id === action.payload ? { ...item, quantity: item.quantity + 1 } : item;
+      const newCart = state.value.map((item) => {
+        item.id === action.payload
+          ? { ...item, quantity: item.quantity + 1 }
+          : item;
       });
+
+      state.value = newCart;
+      storage.setCart(newCart);
     },
     decrementItemQuantity: (state, action) => {
-      const cart = state.value.cart;
-      state.value.cart = cart.map((item) => {
-        item.id === action.payload ? { ...item, quantity: item.quantity - 1 } : item;
+      const newCart = state.value.map((item) => {
+        item.id === action.payload
+          ? { ...item, quantity: item.quantity - 1 }
+          : item;
       });
+
+      state.value = newCart;
+      storage.setCart(newCart);
     },
   },
 });

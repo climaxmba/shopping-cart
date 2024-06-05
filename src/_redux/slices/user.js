@@ -1,16 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
+import storage from "../../modules/storage";
 
-const initialState = { value: { userName: "" } };
+const initialState = {
+  value: storage.getUser(),
+};
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     login: (state, action) => {
-      state.value = action.payload;
+      const newUser = action.payload;
+      state.value = newUser;
+      storage.setUser(newUser);
     },
     logout: (state) => {
       state.value = initialState.value;
+      storage.setUser({
+        userName: "",
+        email: "",
+        password: "",
+        phone: "",
+        address: "",
+      });
     },
   },
 });
