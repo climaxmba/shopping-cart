@@ -19,7 +19,6 @@ const userSlice = createSlice({
       storage.setUser({
         userName: "",
         email: "",
-        password: "",
         phone: "",
         address: "",
       });

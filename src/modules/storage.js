@@ -5,7 +5,6 @@ const storage = (() => {
         JSON.parse(localStorage.getItem("user")) || {
           userName: "",
           email: "",
-          password: "",
           phone: "",
           address: "",
         }
