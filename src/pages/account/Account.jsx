@@ -163,6 +163,11 @@ function Details() {
     navigate("/account/signin");
   };
 
+  const handleReset = () => {
+    localStorage.clear();
+    location.assign(location.origin);
+  };
+
   useEffect(() => {
     !userName && navigate("/account/signup");
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -192,7 +197,17 @@ function Details() {
         <div>{address || none}</div>
       </div>
 
-      <Button text="Log out" fill onClick={handleLogout} />
+      <Button
+        text="Log out"
+        fill
+        onClick={handleLogout}
+        className={styles.logout}
+      />
+      <Button
+        text="Reset Data"
+        className={styles.reset}
+        onClick={handleReset}
+      />
     </div>
   );
 }

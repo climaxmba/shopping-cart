@@ -3,10 +3,14 @@
   flex-direction: column;
 }
 
+$border-spacing: 1rem 2rem;
+
 /* Details */
 .details {
   @include flex-col();
   gap: 1rem;
+  padding: $border-spacing;
+  margin-bottom: 3rem;
 }
 
 .heading {
@@ -15,7 +19,6 @@
 
 .field {
   @include flex-col();
-  gap: 6px;
 
   & > div:first-child {
     letter-spacing: 1px;
@@ -26,12 +29,17 @@
   }
 }
 
+.logout, .reset {
+  max-width: 320px
+}
+
 /* Auth */
 .auth {
   @include flex-col();
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding: $border-spacing;
 
   form {
     @include flex-col();
