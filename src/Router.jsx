@@ -6,7 +6,6 @@ import Categories from "./pages/categories/Categories";
 import ErrorPage from "./ErrorPage";
 import ProductsList from "./pages/productsList/ProductsList";
 import ProductDetails from "./components/productDetails/ProductDetails";
-import ShopItem from "./components/shopItem/ShopItem";
 import RootLayout from "./RootLayout";
 
 import { Provider } from "react-redux";
@@ -53,14 +52,7 @@ const Router = () => {
       path: "products",
       element: (
         <RootLayout menuStates={menuStates}>
-          <ProductsList>
-            <ShopItem />
-            <ShopItem />
-            <ShopItem />
-            <ShopItem />
-            <ShopItem />
-            <ShopItem />
-          </ProductsList>
+          <ProductsList />
         </RootLayout>
       ),
       children: [

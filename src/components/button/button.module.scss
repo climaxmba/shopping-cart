@@ -18,6 +18,14 @@ $fgcolor: white;
   @include button();
   background-color: $fgcolor;
   color: $themecolor;
+
+  &:hover {
+    background-color: lighten($color: $themecolor, $amount: 60);
+  }
+
+  &:active {
+    background-color: lighten($color: $themecolor, $amount: 50);
+  }
 }
 
 @media screen and (width > 680px) {

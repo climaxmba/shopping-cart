@@ -6,13 +6,14 @@ export default function Button({
   onClick = undefined,
   type = "button",
   fill = false,
-  style = undefined
+  style = undefined,
+  className = "",
 }) {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={fill ? styles.fill : styles.outline}
+      className={`${fill ? styles.fill : styles.outline} ${className}`}
       style={style}
     >
       {text}
