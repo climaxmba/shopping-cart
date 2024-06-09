@@ -6,7 +6,11 @@ const likesSlice = createSlice({
   initialState: { value: storage.getLikes() },
   reducers: {
     like: (state, action) => {
-      const newLikes = [...state.value, action.payload];
+      const newLikes = [...state.value];
+      const id = action.payload;
+
+      !newLikes.includes(id) && newLikes.push(id);
+      
       state.value = newLikes;
       storage.setLikes(newLikes);
     },

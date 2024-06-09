@@ -1,11 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-import ProductsList from "../productsList/ProductsList";
-import ShopItem from "../../components/shopItem/ShopItem";
 import storeAPI from "../../modules/storeAPI";
 
 import styles from "./categories.module.scss";
+import CategoryProducts from "./categoryProducts/CategoryProducts";
 
 function CategoryList() {
   const [categories, setCategories] = useState([]);
@@ -37,42 +35,13 @@ function CategoryList() {
 
 function Categories() {
   const { category } = useParams();
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    (async () => {
-      setProducts(await storeAPI.getProductsByCategory(category));
-      setIsLoading(false);
-    })();
-  }, [category]);
 
   return (
     <div className={styles.container}>
       <h2 className={styles.heading}>
         Categories {category && `| ${category}`}
       </h2>
-      {category ? (
-        <>
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            <ProductsList>
-              {products.map((product) => (
-                <ShopItem
-                  key={product.id}
-                  id={product.id}
-                  title={product.title}
-                  price={product.price}
-                  image={product.image}
-                />
-              ))}
-            </ProductsList>
-          )}
-        </>
-      ) : (
-        <CategoryList />
-      )}
+      {category ? <CategoryProducts category={category} /> : <CategoryList />}
     </div>
   );
 }

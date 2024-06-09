@@ -5,8 +5,8 @@
   container: products-sectn / inline-size;
 }
 
-.productsList,
-.collapsableProductsList {
+.products,
+.collapsableProducts {
   flex: 1 1 auto;
   display: grid;
   gap: 8px;
@@ -19,7 +19,7 @@
 }
 
 @media screen and (width > 600px) {
-  .productsList {
+  .products {
     gap: 1rem;
   }
 }
@@ -31,7 +31,7 @@
 }
 
 @container products-sectn (width < 580px) {
-  .collapsableProductsList {
+  .collapsableProducts {
     display: none;
   }
 }

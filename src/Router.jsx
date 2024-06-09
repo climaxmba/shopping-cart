@@ -4,7 +4,7 @@ import Account from "./pages/account/Account";
 import Cart from "./pages/Cart";
 import Categories from "./pages/categories/Categories";
 import ErrorPage from "./ErrorPage";
-import ProductsList from "./pages/productsList/ProductsList";
+import Products from "./pages/products/Products";
 import ProductDetails from "./components/productDetails/ProductDetails";
 import RootLayout from "./RootLayout";
 
@@ -19,7 +19,7 @@ const Router = () => {
 
   const menuStates = {
     menuOpen,
-    setMenuOpen
+    setMenuOpen,
   };
 
   const router = createBrowserRouter([
@@ -52,7 +52,7 @@ const Router = () => {
       path: "products",
       element: (
         <RootLayout menuStates={menuStates}>
-          <ProductsList />
+          <Products />
         </RootLayout>
       ),
       children: [
@@ -63,7 +63,7 @@ const Router = () => {
       ],
     },
     {
-      path: "cart/",
+      path: "cart",
       element: (
         <RootLayout menuStates={menuStates}>
           <Cart />
@@ -85,10 +85,20 @@ const Router = () => {
           <Categories />
         </RootLayout>
       ),
+      children: [
+        {
+          path: ":productId",
+          element: <ProductDetails />,
+        },
+      ],
     },
   ]);
 
-  return <Provider store={store}><RouterProvider router={router} /></Provider>;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 };
 
 export default Router;
