@@ -4,7 +4,7 @@ import storage from "../../modules/storage";
 const initialState = { value: storage.getCart() };
 
 const cartSlice = createSlice({
-  name: "user",
+  name: "cart",
   initialState,
   reducers: {
     addItem: (state, action) => {
@@ -12,25 +12,30 @@ const cartSlice = createSlice({
       state.value = newCart;
       storage.setCart(newCart);
     },
-    getItem: (state, action) => {
-      return state.value.filter((item) => item.id === action.payload);
-    },
     incrementItemQuantity: (state, action) => {
-      const newCart = state.value.map((item) => {
+      const newCart = state.value.map((item) =>
         item.id === action.payload
           ? { ...item, quantity: item.quantity + 1 }
-          : item;
-      });
+          : item
+      );
 
       state.value = newCart;
       storage.setCart(newCart);
     },
     decrementItemQuantity: (state, action) => {
-      const newCart = state.value.map((item) => {
-        item.id === action.payload
-          ? { ...item, quantity: item.quantity - 1 }
-          : item;
-      });
+      const oldCart = state.value;
+      const [product] = oldCart.filter(
+        (cartItem) => cartItem.id === action.payload
+      );
+
+      const newCart =
+        product && product.quantity === 1
+          ? oldCart.filter((item) => item.id != product.id)
+          : oldCart.map((item) =>
+              item.id === action.payload
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            );
 
       state.value = newCart;
       storage.setCart(newCart);

@@ -39,7 +39,7 @@ const storage = (() => {
   }
 
   function setCart(cartArr) {
-    localStorage.setItem("likes", JSON.stringify(cartArr));
+    localStorage.setItem("cart", JSON.stringify(cartArr));
   }
 
   return { getUser, setUser, getLikes, setLikes, getCart, setCart };
