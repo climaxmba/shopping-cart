@@ -21,6 +21,7 @@ $theme-color: maroon;
   background-color: transparent;
   width: 100%;
   text-align: center;
+  text-wrap: nowrap;
 
   &:hover {
     background-color: lighten($color: $theme-color, $amount: 5%);
@@ -29,6 +30,27 @@ $theme-color: maroon;
 
   &:active {
     background-color: darken($color: $theme-color, $amount: 5%);
+  }
+}
+
+.cartQuantityContainer {
+  display: flex;
+  align-items: center;
+
+  .quantityText {
+    flex: 1;
+    text-align: center;
+    font-weight: 500;
+    font-size: large;
+  }
+
+  & > *:not(.quantityText) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $theme-color;
+    border-radius: 4px;
+    padding: 4px;
   }
 }
 

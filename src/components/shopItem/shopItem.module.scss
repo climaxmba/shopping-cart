@@ -1,9 +1,9 @@
-$theme-rad: 4px;
+$theme-red: 4px;
 
 @mixin container {
   display: flex;
   flex-direction: column;
-  border-radius: $theme-rad;
+  border-radius: $theme-red;
 }
 
 .containerDetailed {
@@ -20,6 +20,7 @@ $theme-rad: 4px;
 
 .containerPortrait {
   @include container();
+  position: relative;
   box-shadow: 0 1px 5px 2px #00000020;
 
   .imgContainer {
@@ -32,18 +33,27 @@ $theme-rad: 4px;
   }
 }
 
+.likeContainer {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
 .imgContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   align-self: stretch;
   background-color: pink;
-  border-top-right-radius: $theme-rad;
-  border-top-left-radius: $theme-rad;
+  border-top-right-radius: $theme-red;
+  border-top-left-radius: $theme-red;
 }
 
-.productName {
+.productTitle {
   font-size: medium;
+  overflow-x: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
 }
 
 .price {
