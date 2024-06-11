@@ -6,17 +6,25 @@ import styles from "./shopItem.module.scss";
 
 import { useDispatch } from "react-redux";
 import { like, unLike } from "../../_redux/store";
+import { useParams, useNavigate } from "react-router-dom";
 
 const currency = "$";
 
 export default function ShopItem({ id, title, price, image, liked = false }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { productId } = useParams();
+
+  const handleLike = (e) => {
+    dispatch(liked ? unLike(id) : like(id))
+    e.stopPropagation();
+  }
 
   return (
-    <div className={styles.containerPortrait}>
+    <div className={`${styles.containerPortrait} ${parseInt(productId) === id ? styles.isSelected : ""}`} onClick={() => navigate(id.toString())}>
       <span
         className={styles.likeContainer}
-        onClick={() => dispatch(liked ? unLike(id) : like(id))}
+        onClick={handleLike}
       >
         <Icon
           path={liked ? mdiHeart : mdiHeartOutline}
