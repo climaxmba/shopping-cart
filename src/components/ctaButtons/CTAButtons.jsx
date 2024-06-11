@@ -8,8 +8,6 @@ import {
   addItem,
   incrementItemQuantity,
   decrementItemQuantity,
-  // like,
-  // unLike,
 } from "../../_redux/store";
 
 // function Test() {
@@ -41,16 +39,19 @@ export function AddToCart({ id, title, price }) {
   const cart = useSelector((state) => state.cart.value);
   const [item] = cart.filter((cartItem) => cartItem.id === id);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
     dispatch(addItem({ id, title, price, quantity: 1 }));
+    e.stopPropagation();
   };
 
-  const handleIncrement = () => {
+  const handleIncrement = (e) => {
     dispatch(incrementItemQuantity(id));
+    e.stopPropagation();
   };
 
-  const handleDecrement = () => {
+  const handleDecrement = (e) => {
     dispatch(decrementItemQuantity(id));
+    e.stopPropagation();
   };
 
   return (

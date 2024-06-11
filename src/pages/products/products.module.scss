@@ -1,7 +1,10 @@
+$bg-grey: #00000008;
+
 .container {
   display: flex;
   padding: 1rem;
   gap: 0.8rem;
+  background-color: $bg-grey;
   container: products-sectn / inline-size;
 }
 

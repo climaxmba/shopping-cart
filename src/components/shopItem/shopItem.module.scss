@@ -1,9 +1,11 @@
-$theme-red: 4px;
+$theme-rad: 4px;
+$theme-red: maroon;
 
 @mixin container {
   display: flex;
+  background-color: white;
   flex-direction: column;
-  border-radius: $theme-red;
+  border-radius: $theme-rad;
 }
 
 .containerDetailed {
@@ -33,10 +35,22 @@ $theme-red: 4px;
   }
 }
 
+.isSelected {
+  background-color: #fff1f8;
+  border: 1px solid $theme-red;
+  box-shadow: none;
+}
+
 .likeContainer {
   position: absolute;
   top: 6px;
   right: 6px;
+  transition: transform ease-in 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .imgContainer {
@@ -45,8 +59,8 @@ $theme-red: 4px;
   justify-content: center;
   align-self: stretch;
   background-color: pink;
-  border-top-right-radius: $theme-red;
-  border-top-left-radius: $theme-red;
+  border-top-right-radius: $theme-rad;
+  border-top-left-radius: $theme-rad;
 }
 
 .productTitle {
