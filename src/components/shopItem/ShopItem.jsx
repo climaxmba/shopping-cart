@@ -16,13 +16,19 @@ export default function ShopItem({ id, title, price, image, liked = false }) {
   const { productId } = useParams();
 
   const handleLike = (e) => {
-    dispatch(liked ? unLike(id) : like(id))
+    dispatch(liked ? unLike(id) : like(id));
     e.stopPropagation();
-  }
+  };
 
   return (
-    <div className={`${styles.containerPortrait} ${parseInt(productId) === id ? styles.isSelected : ""}`} onClick={() => navigate(id.toString())}>
+    <div
+      className={`${styles.containerPortrait} ${
+        parseInt(productId) === id ? styles.isSelected : ""
+      }`}
+      onClick={() => navigate(id.toString())}
+    >
       <span
+        title={liked ? "Unlike" : "Like"}
         className={styles.likeContainer}
         onClick={handleLike}
       >
@@ -46,14 +52,16 @@ export default function ShopItem({ id, title, price, image, liked = false }) {
   );
 }
 
-export function ShopItemDetailed() {
+export function ShopItemDetailed({ id, image, title, price }) {
   return (
     <div className={styles.containerDetailed}>
-      <div className={styles.imgContainer}>IMG</div>
+      <div className={styles.imgContainer}>
+        <img src={image} alt="" />
+      </div>
       <div>
-        <div className={styles.productName}>Product Name</div>
-        <div className={styles.price}>Price</div>
-        <CTAButtons />
+        <div className={styles.productName}>{title}</div>
+        <div className={styles.price}>{`${currency}${price}`}</div>
+        <CTAButtons id={id} title={title} price={price} />
       </div>
     </div>
   );

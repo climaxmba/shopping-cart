@@ -1,19 +1,38 @@
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./productDetails.module.scss";
 import { ShopItemDetailed } from "../shopItem/ShopItem";
+import { useEffect, useState } from "react";
+import storeAPI from "../../modules/storeAPI";
 
 export default function ProductDetails() {
-  // const { productId } = useParams();
+  const { productId } = useParams();
+  const [product, setProduct] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  // getDetails
+  useEffect(() => {
+    setIsLoading(true);
+  }, [productId])
+
+  useEffect(() => {
+    (async () => {
+      setProduct(await storeAPI.getProductById(productId));
+      setIsLoading(false);
+    })();
+  }, [productId]);
 
   return (
-    <div className={styles.container}>
-      <ShopItemDetailed />
-      <Description />
-      {/* <Reviews />
+    <>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className={styles.container}>
+          <ShopItemDetailed id={parseInt(productId)} image={product.image} title={product.title} price={product.price} />
+          <Description />
+          {/* <Reviews />
       <SimilarProducts /> */}
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 

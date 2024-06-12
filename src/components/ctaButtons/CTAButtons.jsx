@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import Icon from "@mdi/react";
-import { mdiHeartOutline, mdiMinus, mdiPlus } from "@mdi/js";
+import { mdiHeart, mdiHeartOutline, mdiMinus, mdiPlus } from "@mdi/js";
 import styles from "./ctaButton.module.scss";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,8 @@ import {
   addItem,
   incrementItemQuantity,
   decrementItemQuantity,
+  like,
+  unLike,
 } from "../../_redux/store";
 
 // function Test() {
@@ -24,12 +26,25 @@ import {
 //   );
 // }
 
-// Props: { addToCart, incrementQuantity, decrementQuantity, like, unLike }
-export default function CTAButtons() {
+export default function CTAButtons({ id, title, price }) {
+  const dispatch = useDispatch();
+  const liked = useSelector((state) => state.likes.value).includes(id);
+
+  const handleLike = (e) => {
+    dispatch(liked ? unLike(id) : like(id));
+    e.stopPropagation();
+  };
+
   return (
     <div className={styles.ctaContainer}>
-      <AddToCart />
-      <Icon path={mdiHeartOutline} />
+      <AddToCart id={id} title={title} price={price} />
+      <span title={liked ? "Unlike" : "Like"} className={styles.likeContainer} onClick={handleLike}>
+        <Icon
+          path={liked ? mdiHeart : mdiHeartOutline}
+          size={1.2}
+          color="#e91e63"
+        />
+      </span>
     </div>
   );
 }
@@ -61,7 +76,9 @@ export function AddToCart({ id, title, price }) {
           <span title="Decrease Quantity" onClick={handleDecrement}>
             <Icon size={1} path={mdiMinus} color="white" />
           </span>
-          <span title="Item Quantity" className={styles.quantityText}>{item.quantity}</span>
+          <span title="Item Quantity" className={styles.quantityText}>
+            {item.quantity}
+          </span>
           <span title="Increase Quantity" onClick={handleIncrement}>
             <Icon size={1} path={mdiPlus} color="white" />
           </span>

@@ -16,7 +16,7 @@ const storeAPI = (() => {
   function getProductById(id) {
     return new Promise((res) => {
       setTimeout(
-        () => res(products.filter((product) => product.id === id)),
+        () => res(products.filter((product) => product.id === parseInt(id))[0]),
         3000
       );
     });
