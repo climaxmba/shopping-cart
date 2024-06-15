@@ -13,6 +13,12 @@ $theme-red: maroon;
   color: white !important;
 }
 
+.title {
+  max-width: 5ch;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+}
+
 .totalCell {
   color: $theme-red !important;
   font-weight: 600 !important;

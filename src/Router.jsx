@@ -1,18 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
+import { useState } from "react";
+import { store } from "./_redux/store";
+
 import App from "./pages/App";
 import Account from "./pages/account/Account";
-import Cart from "./pages/Cart";
+import Cart from "./pages/cart/Cart";
 import Categories from "./pages/categories/Categories";
 import ErrorPage from "./ErrorPage";
 import Products from "./pages/products/Products";
 import ProductDetails from "./components/productDetails/ProductDetails";
 import RootLayout from "./RootLayout";
 
-import { Provider } from "react-redux";
-
 import "./index.scss";
-import { useState } from "react";
-import { store } from "./_redux/store";
 
 const Router = () => {
   const [menuOpen, setMenuOpen] = useState(false);

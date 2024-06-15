@@ -10,9 +10,8 @@ import {
 } from "@mui/material";
 import styles from "./productsTable.module.scss";
 
-export default function ProductsTable({ products }) {
+export default function ProductsTable({ products, totalAmount }) {
   const currency = "$";
-  let totalAmount = 0;
 
   return (
     <TableContainer component={Paper} className={styles.container}>
@@ -26,11 +25,9 @@ export default function ProductsTable({ products }) {
         </TableHead>
         <TableBody>
           {products.map((product) => {
-            totalAmount +=
-              parseFloat(product.price) * parseFloat(product.quantity);
             return (
               <TableRow key={product.id}>
-                <TableCell>{product.title}</TableCell>
+                <TableCell title={product.title} className={styles.title}>{product.title}</TableCell>
                 <TableCell>
                   {currency}
                   {product.price}
