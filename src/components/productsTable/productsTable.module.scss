@@ -1,0 +1,20 @@
+$theme-red: maroon;
+
+.container {
+  text-wrap: nowrap;
+}
+
+.headerRow {
+  background-color: $theme-red;
+}
+
+.header {
+  font-weight: 600 !important;
+  color: white !important;
+}
+
+.totalCell {
+  color: $theme-red !important;
+  font-weight: 600 !important;
+  font-size: large !important;
+}
