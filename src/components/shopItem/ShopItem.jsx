@@ -39,7 +39,7 @@ export default function ShopItem({ id, title, price, image, liked = false }) {
         />
       </span>
       <div className={styles.imgContainer}>
-        <img src={image} />
+        <img src={image} alt="" />
       </div>
       <div>
         <div className={styles.productTitle} title={title}>
@@ -60,6 +60,21 @@ export function ShopItemDetailed({ id, image, title, price }) {
       </div>
       <div>
         <div className={styles.productName}>{title}</div>
+        <div className={styles.price}>{`${currency}${price}`}</div>
+        <CTAButtons id={id} title={title} price={price} />
+      </div>
+    </div>
+  );
+}
+
+export function ShopItemHorizontal({ id, image, title, price }) {
+  return (
+    <div className={styles.containerHorizontal}>
+      <div className={styles.imgContainer}>
+        <img src={image} alt="" />
+      </div>
+      <div>
+        <div title={title} className={styles.productName}>{title}</div>
         <div className={styles.price}>{`${currency}${price}`}</div>
         <CTAButtons id={id} title={title} price={price} />
       </div>

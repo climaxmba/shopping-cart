@@ -35,6 +35,29 @@ $theme-red: maroon;
   }
 }
 
+.containerHorizontal {
+  @include container();
+  flex-direction: row;
+  gap: 8px;
+  max-width: 98%;
+
+  & > *:last-child {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .imgContainer {
+    flex: 0 0 100px;
+  }
+
+  .productName {
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+  }
+}
+
 .isSelected {
   background-color: #fff1f8;
   border: 1px solid $theme-red;
