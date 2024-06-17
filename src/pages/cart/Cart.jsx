@@ -27,7 +27,7 @@ function Cart() {
       <CartList products={data} />
       {/* <ProductsTable products={data} totalAmount={totalAmount} /> */}
       <Button
-        text={`Checkout ($${totalAmount})`}
+        text={`Checkout ($${(totalAmount).toFixed(2)})`}
         style={{ margin: "1.5rem 0" }}
         onClick={() => alert("Checked out!")}
         fill
