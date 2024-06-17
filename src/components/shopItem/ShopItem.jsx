@@ -62,7 +62,7 @@ export function ShopItemDetailed({ id, image, title, price }) {
       <div>
         <div className={styles.productName}>{title}</div>
         <div className={styles.price}>{`${currency}${price}`}</div>
-        <CTAButtons id={id} title={title} price={price} />
+        <CTAButtons id={id} title={title} price={price} image={image} />
       </div>
     </div>
   );
@@ -79,7 +79,7 @@ export function ShopItemHorizontal({ id, image, title, price }) {
           {title}
         </div>
         <div className={styles.price}>{`${currency}${price}`}</div>
-        <CTAButtons id={id} title={title} price={price} />
+        <CTAButtons id={id} title={title} price={price} image={image} />
       </div>
     </div>
   );

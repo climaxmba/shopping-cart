@@ -26,7 +26,7 @@ import {
 //   );
 // }
 
-export default function CTAButtons({ id, title, price }) {
+export default function CTAButtons({ id, title, price, image }) {
   const dispatch = useDispatch();
   const liked = useSelector((state) => state.likes.value).includes(id);
 
@@ -37,7 +37,7 @@ export default function CTAButtons({ id, title, price }) {
 
   return (
     <div className={styles.ctaContainer}>
-      <AddToCart id={id} title={title} price={price} />
+      <AddToCart id={id} title={title} price={price} image={image} />
       <span title={liked ? "Unlike" : "Like"} className={styles.likeContainer} onClick={handleLike}>
         <Icon
           path={liked ? mdiHeart : mdiHeartOutline}
@@ -49,13 +49,13 @@ export default function CTAButtons({ id, title, price }) {
   );
 }
 
-export function AddToCart({ id, title, price }) {
+export function AddToCart({ id, title, price, image }) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.value);
   const [item] = cart.filter((cartItem) => cartItem.id === id);
 
   const handleAddToCart = (e) => {
-    dispatch(addItem({ id, title, price, quantity: 1 }));
+    dispatch(addItem({ id, title, price, quantity: 1, image }));
     e.stopPropagation();
   };
 

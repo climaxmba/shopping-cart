@@ -13,7 +13,11 @@ $theme-green: seagreen;
   @include container();
 
   .imgContainer {
-    flex: 0 0 150px;
+    flex: 0 0 180px;
+
+    img {
+      height: 180px;
+    }
   }
 
   & > div:not(.imgContainer) {
@@ -28,6 +32,13 @@ $theme-green: seagreen;
 
   .imgContainer {
     height: 120px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      aspect-ratio: 1 / 1;
+    }
   }
 
   & > div:not(.imgContainer) {
@@ -50,6 +61,12 @@ $theme-green: seagreen;
 
   .imgContainer {
     flex: 0 0 100px;
+
+    img {
+      width: 100%;
+      object-fit: contain;
+      aspect-ratio: 1 / 1;
+    }
   }
 
   .productName {
@@ -82,6 +99,7 @@ $theme-green: seagreen;
   align-items: center;
   justify-content: center;
   align-self: stretch;
+  // temporary
   background-color: pink;
   border-top-right-radius: $theme-rad;
   border-top-left-radius: $theme-rad;

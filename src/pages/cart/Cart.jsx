@@ -13,6 +13,7 @@ function Cart() {
       title: item.title,
       price: item.price,
       quantity: item.quantity,
+      image: item.image
     };
   });
   const totalAmount = data.reduce(
