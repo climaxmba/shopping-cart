@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useParams } from "react-router-dom";
-import styles from "./productDetails.module.scss";
-import { ShopItemDetailed } from "../shopItem/ShopItem";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { ShopItemDetailed } from "../shopItem/ShopItem";
+import { Rating as MUIRating } from "@mui/material"
 import storeAPI from "../../modules/storeAPI";
+import styles from "./productDetails.module.scss";
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -57,7 +58,7 @@ function Rating({ rating, count }) {
       <h2>Rating</h2>
       <div className={styles.rating}>
         <span>{rating} / 5</span>
-        <progress max={5} value={rating} />
+        <MUIRating max={5} value={rating} precision={0.1} readOnly />
         <span>({count})</span>
       </div>
     </div>

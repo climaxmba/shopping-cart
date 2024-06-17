@@ -1,3 +1,5 @@
+$menu-width: 32px;
+
 .navBar {
   display: flex;
   gap: 1rem;
@@ -25,9 +27,10 @@
   gap: 6px;
   position: relative;
   cursor: pointer;
+  width: $menu-width;
 
   & > * {
-    width: 32px;
+    width: $menu-width;
     height: 3px;
     background-color: black;
     border-radius: 6px;
