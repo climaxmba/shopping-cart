@@ -35,6 +35,7 @@ export default function ProductsList({ getProducts, hasProductId = false, }) {
               title={product.title}
               price={product.price}
               image={product.image}
+              rating={product.rating}
               liked={likes.includes(product.id)}
             />
           ))}

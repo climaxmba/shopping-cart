@@ -1,5 +1,6 @@
 $theme-rad: 4px;
 $theme-red: maroon;
+$theme-green: seagreen;
 
 @mixin container {
   display: flex;
@@ -96,4 +97,5 @@ $theme-red: maroon;
 .price {
   font-size: large;
   font-weight: 500;
+  color: $theme-green;
 }

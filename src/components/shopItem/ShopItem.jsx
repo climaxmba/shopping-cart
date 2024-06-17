@@ -1,16 +1,17 @@
 /* eslint-disable react/prop-types */
-import { mdiHeart, mdiHeartOutline } from "@mdi/js";
-import Icon from "@mdi/react";
-import CTAButtons, { AddToCart } from "../ctaButtons/CTAButtons";
-import styles from "./shopItem.module.scss";
-
 import { useDispatch } from "react-redux";
 import { like, unLike } from "../../_redux/store";
 import { useParams, useNavigate } from "react-router-dom";
+import { mdiHeart, mdiHeartOutline } from "@mdi/js";
+import Icon from "@mdi/react";
+import { Rating } from "@mui/material";
+
+import CTAButtons from "../ctaButtons/CTAButtons";
+import styles from "./shopItem.module.scss";
 
 const currency = "$";
 
-export default function ShopItem({ id, title, price, image, liked = false }) {
+export default function ShopItem({ id, title, price, image, rating, liked = false }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { productId } = useParams();
@@ -46,7 +47,7 @@ export default function ShopItem({ id, title, price, image, liked = false }) {
           {title}
         </div>
         <div className={styles.price}>{`${currency}${price}`}</div>
-        <AddToCart id={id} title={title} price={price} />
+        <Rating value={rating.rate} precision={0.1} readOnly />
       </div>
     </div>
   );
@@ -74,7 +75,9 @@ export function ShopItemHorizontal({ id, image, title, price }) {
         <img src={image} alt="" />
       </div>
       <div>
-        <div title={title} className={styles.productName}>{title}</div>
+        <div title={title} className={styles.productName}>
+          {title}
+        </div>
         <div className={styles.price}>{`${currency}${price}`}</div>
         <CTAButtons id={id} title={title} price={price} />
       </div>
