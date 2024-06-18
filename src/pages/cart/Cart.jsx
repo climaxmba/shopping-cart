@@ -16,11 +16,6 @@ function Cart() {
       image: item.image
     };
   });
-  const totalAmount = data.reduce(
-    (total, product) =>
-      total + parseFloat(product.price) * parseFloat(product.quantity),
-    0
-  );
 
   return (
     <div className={styles.container}>
@@ -28,7 +23,7 @@ function Cart() {
       <CartList products={data} />
       {/* <ProductsTable products={data} totalAmount={totalAmount} /> */}
       <Button
-        text={`Checkout ($${(totalAmount).toFixed(2)})`}
+        text={"Proceed to Checkout"}
         style={{ margin: "1.5rem 0" }}
         onClick={() => alert("Checked out!")}
         fill

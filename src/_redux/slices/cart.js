@@ -1,7 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 import storage from "../../modules/storage";
 
-const initialState = { value: storage.getCart() };
+const initialState = {
+  value: storage.getCart(),
+  totalAmount: storage.getCartTotal(),
+};
+
+const calcTotal = (cart) => {
+  return cart
+    .reduce(
+      (total, product) =>
+        total + parseFloat(product.price) * parseFloat(product.quantity),
+      0
+    )
+    .toFixed(2);
+};
 
 const cartSlice = createSlice({
   name: "cart",
@@ -9,7 +22,9 @@ const cartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       const newCart = [...state.value, action.payload];
+
       state.value = newCart;
+      state.totalAmount = calcTotal(newCart);
       storage.setCart(newCart);
     },
     incrementItemQuantity: (state, action) => {
@@ -20,6 +35,7 @@ const cartSlice = createSlice({
       );
 
       state.value = newCart;
+      state.totalAmount = calcTotal(newCart);
       storage.setCart(newCart);
     },
     decrementItemQuantity: (state, action) => {
@@ -38,6 +54,7 @@ const cartSlice = createSlice({
             );
 
       state.value = newCart;
+      state.totalAmount = calcTotal(newCart);
       storage.setCart(newCart);
     },
   },

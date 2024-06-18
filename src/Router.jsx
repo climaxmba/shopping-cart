@@ -10,6 +10,7 @@ import Categories from "./pages/categories/Categories";
 import ErrorPage from "./ErrorPage";
 import Products from "./pages/products/Products";
 import ProductDetails from "./components/productDetails/ProductDetails";
+import Checkout from "./pages/checkout/Checkout";
 import RootLayout from "./RootLayout";
 
 import "./index.scss";
@@ -91,6 +92,14 @@ const Router = () => {
           element: <ProductDetails />,
         },
       ],
+    },
+    {
+      path: "checkout",
+      element: (
+        <RootLayout menuStates={menuStates}>
+          <Checkout />
+        </RootLayout>
+      ),
     },
   ]);
 

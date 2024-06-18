@@ -42,7 +42,29 @@ const storage = (() => {
     localStorage.setItem("cart", JSON.stringify(cartArr));
   }
 
-  return { getUser, setUser, getLikes, setLikes, getCart, setCart };
+  function getCartTotal() {
+    try {
+      return (JSON.parse(localStorage.getItem("cart")) || [])
+        .reduce(
+          (total, product) =>
+            total + parseFloat(product.price) * parseFloat(product.quantity),
+          0
+        )
+        .toFixed(2);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  return {
+    getUser,
+    setUser,
+    getLikes,
+    setLikes,
+    getCart,
+    setCart,
+    getCartTotal,
+  };
 })();
 
 export default storage;
