@@ -2,15 +2,9 @@
 .collapsableProducts {
   flex: 1 1 auto;
   display: grid;
-  gap: 8px;
+  gap: 0.8rem;
   grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
   grid-auto-rows: max-content;
-}
-
-@media screen and (width > 600px) {
-  .products {
-    gap: 1rem;
-  }
 }
 
 @container products-sectn (width < 580px) {

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useSelector } from "react-redux";
-// import ProductsTable from "../../components/productsTable/ProductTable";
+import { useNavigate } from "react-router-dom";
 import styles from "./cart.module.scss";
 import Button from "../../components/button/Button";
 import { ShopItemHorizontal } from "../../components/shopItem/ShopItem";
@@ -16,16 +16,16 @@ function Cart() {
       image: item.image
     };
   });
+  const navigate = useNavigate();
 
   return (
     <div className={styles.container}>
       <h2>Cart</h2>
       <CartList products={data} />
-      {/* <ProductsTable products={data} totalAmount={totalAmount} /> */}
       <Button
         text={"Proceed to Checkout"}
         style={{ margin: "1.5rem 0" }}
-        onClick={() => alert("Checked out!")}
+        onClick={() => navigate("/checkout")}
         fill
       />
     </div>
