@@ -14,7 +14,7 @@ export default function ProductsTable({ products, totalAmount }) {
   const currency = "$";
 
   return (
-    <TableContainer component={Paper} className={styles.container}>
+    <TableContainer sx={{".MuiTableCell-root": {padding: "12px"}}} component={Paper} className={styles.container}>
       <Table>
         <TableHead>
           <TableRow className={styles.headerRow}>
@@ -24,9 +24,9 @@ export default function ProductsTable({ products, totalAmount }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map((product) => {
+          {products.map((product, i) => {
             return (
-              <TableRow key={product.id}>
+              <TableRow key={product.id} sx={{backgroundColor: (i % 2 === 0 ? "#ff00af0f" : "unset")}}>
                 <TableCell title={product.title} className={styles.title}>{product.title}</TableCell>
                 <TableCell>
                   {currency}

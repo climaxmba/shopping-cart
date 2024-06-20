@@ -90,3 +90,7 @@ $theme-lightred: lighten($color: $theme-red, $amount: 72);
     }
   }
 }
+
+.summary {
+  @include checkout-pages();
+}

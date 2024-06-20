@@ -1,29 +1,16 @@
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-// import ProductsTable from "../../components/productsTable/ProductTable";
+import ProductsTable from "../../components/productsTable/ProductTable";
 import { useState } from "react";
 import styles from "./checkout.module.scss";
 import Icon from "@mdi/react";
 import { mdiStoreOutline, mdiTruckOutline } from "@mdi/js";
 
 export default function Checkout() {
-  // const cart = useSelector((state) => state.cart.value);
-  // const totalAmount = useSelector((state) => state.cart.totalAmount);
-  // const data = cart.map((item) => {
-  //   return {
-  //     id: item.id,
-  //     title: item.title,
-  //     price: item.price,
-  //     quantity: item.quantity,
-  //     image: item.image
-  //   };
-  // });
-
   return (
     <div className={styles.container}>
       <h2>Checkout</h2>
-      {/* <ProductsTable products={data} totalAmount={totalAmount} /> */}
-      <Shipping />
+      <Summary />
     </div>
   );
 }
@@ -85,6 +72,37 @@ function Shipping() {
             </div>
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function Summary() {
+  const cart = useSelector((state) => state.cart.value);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const data = cart.map((item) => {
+    return {
+      id: item.id,
+      title: item.title,
+      price: item.price,
+      quantity: item.quantity,
+      image: item.image,
+    };
+  });
+
+  return (
+    <div className={styles.summary}>
+      <div>
+        <h3>Summary</h3>
+        <ProductsTable products={data} totalAmount={totalAmount} />
+      </div>
+      <div>
+        <h3>Shipping Address</h3>
+        <p>124 York Street, CA</p>
+      </div>
+      <div>
+        <h3>Payment Method</h3>
+        <p>Payment Method</p>
       </div>
     </div>
   );
