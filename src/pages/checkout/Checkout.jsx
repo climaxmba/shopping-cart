@@ -4,13 +4,59 @@ import ProductsTable from "../../components/productsTable/ProductTable";
 import { useState } from "react";
 import styles from "./checkout.module.scss";
 import Icon from "@mdi/react";
-import { mdiStoreOutline, mdiTruckOutline } from "@mdi/js";
+import { mdiCash, mdiStoreOutline, mdiTruckOutline, mdiWalletOutline } from "@mdi/js";
 
 export default function Checkout() {
   return (
     <div className={styles.container}>
       <h2>Checkout</h2>
-      <Summary />
+      <Billing />
+    </div>
+  );
+}
+
+function Billing() {
+  const [options, setOptions] = useState([
+    {
+      title: "Use e-Wallet",
+      info: "The amount would be deducted right away from your wallet.",
+      selected: false,
+      icon: mdiWalletOutline,
+    },
+    {
+      title: "Pay with Cash",
+      info: "You pay with cash, after delivery.",
+      selected: false,
+      icon: mdiCash,
+    },
+  ]);
+
+  const selectOption = (id) => {
+    const tempOption = options.map((option, i) => {
+      if (i === id) return { ...option, selected: true };
+      else return { ...option, selected: false };
+    });
+    setOptions(tempOption);
+  };
+
+  return (
+    <div className={styles.billing}>
+        <h3>Set Payment Method</h3>
+        <div className={styles.radioFieldContainer}>
+          {options.map((option, i) => (
+            <div
+              key={option.title}
+              className={`${styles.radioField} ${
+                option.selected ? styles.selected : ""
+              }`}
+              onClick={() => selectOption(i)}
+            >
+              <Icon path={option.icon} color={"black"} size={1} />
+              <div className={styles.title}>{option.title}</div>
+              <span className={styles.info}>{option.info}</span>
+            </div>
+          ))}
+        </div>
     </div>
   );
 }
@@ -18,14 +64,12 @@ export default function Checkout() {
 function Shipping() {
   const [options, setOptions] = useState([
     {
-      id: 0,
       title: "Express Delivery",
       info: "Your order would be delivered to your house, this attracts a delivery fee of $15.",
       selected: false,
       icon: mdiTruckOutline,
     },
     {
-      id: 1,
       title: "Pickup Location",
       info: "You visit a store close to you to recieve your order. No delivery fee required.",
       selected: false,
@@ -34,8 +78,8 @@ function Shipping() {
   ]);
 
   const selectOption = (id) => {
-    const tempOption = options.map((option) => {
-      if (option.id === id) return { ...option, selected: true };
+    const tempOption = options.map((option, i) => {
+      if (i === id) return { ...option, selected: true };
       else return { ...option, selected: false };
     });
     setOptions(tempOption);
@@ -58,13 +102,13 @@ function Shipping() {
       <div>
         <div className={styles.header}>Set Delivery Method</div>
         <div className={styles.radioFieldContainer}>
-          {options.map((option) => (
+          {options.map((option, i) => (
             <div
               key={option.title}
               className={`${styles.radioField} ${
                 option.selected ? styles.selected : ""
               }`}
-              onClick={() => selectOption(option.id)}
+              onClick={() => selectOption(i)}
             >
               <Icon path={option.icon} color={"black"} size={1} />
               <div className={styles.title}>{option.title}</div>
