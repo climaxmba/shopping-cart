@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import styles from "./productsList.module.scss";
 import ShopItem from "../shopItem/ShopItem";
+import Loading from "../loading/Loading";
 
 /** Requires container style: `{container: products-sectn / inline-size;}` */
 export default function ProductsList({ getProducts, hasProductId = false, }) {
@@ -21,7 +22,7 @@ export default function ProductsList({ getProducts, hasProductId = false, }) {
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : (
         <div
           className={

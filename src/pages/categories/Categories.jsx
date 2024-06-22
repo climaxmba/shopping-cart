@@ -4,6 +4,7 @@ import storeAPI from "../../modules/storeAPI";
 
 import styles from "./categories.module.scss";
 import CategoryProducts from "./categoryProducts/CategoryProducts";
+import Loading from "../../components/loading/Loading";
 
 function CategoryList() {
   const [categories, setCategories] = useState([]);
@@ -19,7 +20,7 @@ function CategoryList() {
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : (
         <ul className={styles.categoryList}>
           {categories.map((category) => (

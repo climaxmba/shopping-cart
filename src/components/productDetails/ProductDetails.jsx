@@ -5,6 +5,7 @@ import { ShopItemDetailed } from "../shopItem/ShopItem";
 import { Rating as MUIRating } from "@mui/material"
 import storeAPI from "../../modules/storeAPI";
 import styles from "./productDetails.module.scss";
+import Loading from "../loading/Loading";
 
 export default function ProductDetails() {
   const { productId } = useParams();
@@ -25,7 +26,7 @@ export default function ProductDetails() {
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : (
         <div className={styles.container}>
           <ShopItemDetailed
