@@ -10,11 +10,19 @@ import {
 } from "@mui/material";
 import styles from "./productsTable.module.scss";
 
-export default function ProductsTable({ products, totalAmount }) {
+export default function ProductsTable({
+  products,
+  totalAmount,
+  includeShipping = false,
+}) {
   const currency = "$";
 
   return (
-    <TableContainer sx={{".MuiTableCell-root": {padding: "12px"}}} component={Paper} className={styles.container}>
+    <TableContainer
+      sx={{ ".MuiTableCell-root": { padding: "12px" } }}
+      component={Paper}
+      className={styles.container}
+    >
       <Table>
         <TableHead>
           <TableRow className={styles.headerRow}>
@@ -26,8 +34,13 @@ export default function ProductsTable({ products, totalAmount }) {
         <TableBody>
           {products.map((product, i) => {
             return (
-              <TableRow key={product.id} sx={{backgroundColor: (i % 2 === 0 ? "#ff00af0f" : "unset")}}>
-                <TableCell title={product.title} className={styles.title}>{product.title}</TableCell>
+              <TableRow
+                key={product.id}
+                sx={{ backgroundColor: i % 2 === 0 ? "#ff00af0f" : "unset" }}
+              >
+                <TableCell title={product.title} className={styles.title}>
+                  {product.title}
+                </TableCell>
                 <TableCell>
                   {currency}
                   {product.price}
@@ -36,11 +49,24 @@ export default function ProductsTable({ products, totalAmount }) {
               </TableRow>
             );
           })}
+          {includeShipping ? (
+            <TableRow sx={{ backgroundColor: "lightyellow" }}>
+              <TableCell className={styles.title}>Shipping:</TableCell>
+              <TableCell colSpan={2}>
+                {currency}
+                15.00
+              </TableCell>
+            </TableRow>
+          ) : (
+            <></>
+          )}
           <TableRow>
             <TableCell className={styles.totalCell}>Total:</TableCell>
             <TableCell colSpan={2} className={styles.totalCell}>
               {currency}
-              {totalAmount}
+              {includeShipping
+                ? (parseFloat(totalAmount) + 15).toFixed(2)
+                : totalAmount}
             </TableCell>
           </TableRow>
         </TableBody>

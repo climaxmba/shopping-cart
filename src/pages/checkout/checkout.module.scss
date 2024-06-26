@@ -1,4 +1,5 @@
 $theme-red: maroon;
+$theme-green: limegreen;
 $theme-lightred: lighten(
   $color: $theme-red,
   $amount: 72,
@@ -9,6 +10,20 @@ $theme-lightred: lighten(
   border-radius: 8px;
   padding: 1rem;
   width: 300px;
+
+  .nextButton {
+    background-color: $theme-red;
+    text-transform: capitalize;
+    width: 100%;
+
+    &:hover {
+      background-color: darken($color: $theme-red, $amount: 3);
+    }
+
+    &:focus {
+      outline: 1px solid black;
+    }
+  }
 }
 
 .container {
@@ -56,6 +71,16 @@ $theme-lightred: lighten(
 .billing,
 .summary {
   @include checkout-pages();
+}
+
+.summary {
+  .nextButton {
+    background-color: $theme-green;
+
+    &:hover {
+      background-color: darken($color: $theme-green, $amount: 3);
+    }
+  }
 }
 
 .radioFieldContainer {

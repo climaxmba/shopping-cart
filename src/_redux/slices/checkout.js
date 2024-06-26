@@ -12,7 +12,7 @@ const checkoutSlice = createSlice({
     billing: {
       options: [
         {
-          title: "Use e-Wallet",
+          title: "e-Wallet",
           info: "The amount would be deducted right away from your wallet.",
           selected: false,
           icon: mdiWalletOutline,

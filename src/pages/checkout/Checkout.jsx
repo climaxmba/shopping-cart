@@ -1,89 +1,137 @@
-import { useSelector } from "react-redux";
+/* eslint-disable react/prop-types */
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setBillingOptions,
+  setShippingAddress,
+  setShippingOptions,
+} from "../../_redux/store";
+import { useState } from "react";
+import { Button } from "@mui/material";
+import Icon from "@mdi/react";
 
 import ProductsTable from "../../components/productsTable/ProductTable";
-import { useState } from "react";
+import Stepper from "../../components/stepper/Stepper";
+
 import styles from "./checkout.module.scss";
-import Icon from "@mdi/react";
-import { mdiCash, mdiStoreOutline, mdiTruckOutline, mdiWalletOutline } from "@mdi/js";
 
 export default function Checkout() {
+  const [pages, setPages] = useState([
+    {
+      element: Billing,
+      isActive: true,
+      completed: false,
+    },
+    {
+      element: Shipping,
+      isActive: false,
+      completed: false,
+    },
+    {
+      element: Summary,
+      isActive: false,
+      completed: false,
+    },
+  ]);
+
+  let ActivePage, activeIndex;
+
+  pages.forEach((page, index) => {
+    if (page.isActive) {
+      ActivePage = page.element;
+      activeIndex = index;
+    }
+  });
+
+  const next = () => {
+    // Set completed to `true`
+    const tempPages = pages.map((page, i) => {
+      if (activeIndex === i) return { ...page, completed: true };
+      return page;
+    });
+
+    if (activeIndex + 1 !== pages.length) {
+      setPages(
+        tempPages.map((page, i) => {
+          if (activeIndex + 1 === i) return { ...page, isActive: true };
+          return { ...page, isActive: false };
+        })
+      );
+    } else {
+      setPages(tempPages);
+      // checkout
+    }
+  };
+
   return (
     <div className={styles.container}>
       <h2>Checkout</h2>
-      <Billing />
+      <Stepper pages={pages} />
+      <ActivePage next={next} />
     </div>
   );
 }
 
-function Billing() {
-  const [options, setOptions] = useState([
-    {
-      title: "Use e-Wallet",
-      info: "The amount would be deducted right away from your wallet.",
-      selected: false,
-      icon: mdiWalletOutline,
-    },
-    {
-      title: "Pay with Cash",
-      info: "You pay with cash, after delivery.",
-      selected: false,
-      icon: mdiCash,
-    },
-  ]);
+function Billing({ next }) {
+  const options = useSelector((state) => state.checkout.billing.options);
+  const dispatch = useDispatch();
 
   const selectOption = (id) => {
     const tempOption = options.map((option, i) => {
       if (i === id) return { ...option, selected: true };
       else return { ...option, selected: false };
     });
-    setOptions(tempOption);
+    dispatch(setBillingOptions(tempOption));
   };
+
+  const nextButtonDisabled = options.find((val) => val.selected) ? false : true;
 
   return (
     <div className={styles.billing}>
-        <h3>Set Payment Method</h3>
-        <div className={styles.radioFieldContainer}>
-          {options.map((option, i) => (
-            <div
-              key={option.title}
-              className={`${styles.radioField} ${
-                option.selected ? styles.selected : ""
-              }`}
-              onClick={() => selectOption(i)}
-            >
-              <Icon path={option.icon} color={"black"} size={1} />
-              <div className={styles.title}>{option.title}</div>
-              <span className={styles.info}>{option.info}</span>
-            </div>
-          ))}
-        </div>
+      <h3>Set Payment Method</h3>
+      <div className={styles.radioFieldContainer}>
+        {options.map((option, i) => (
+          <div
+            key={option.title}
+            className={`${styles.radioField} ${
+              option.selected ? styles.selected : ""
+            }`}
+            onClick={() => selectOption(i)}
+          >
+            <Icon path={option.icon} color={"black"} size={1} />
+            <div className={styles.title}>{option.title}</div>
+            <span className={styles.info}>{option.info}</span>
+          </div>
+        ))}
+      </div>
+
+      <Button
+        variant="contained"
+        className={styles.nextButton}
+        sx={{ margin: "1rem 0" }}
+        onClick={next}
+        disabled={nextButtonDisabled}
+      >
+        Next
+      </Button>
     </div>
   );
 }
 
-function Shipping() {
-  const [options, setOptions] = useState([
-    {
-      title: "Express Delivery",
-      info: "Your order would be delivered to your house, this attracts a delivery fee of $15.",
-      selected: false,
-      icon: mdiTruckOutline,
-    },
-    {
-      title: "Pickup Location",
-      info: "You visit a store close to you to recieve your order. No delivery fee required.",
-      selected: false,
-      icon: mdiStoreOutline,
-    },
-  ]);
+function Shipping({ next }) {
+  const address = useSelector((state) => state.checkout.shipping.address);
+  const options = useSelector((state) => state.checkout.shipping.options);
+  const dispatch = useDispatch();
 
   const selectOption = (id) => {
     const tempOption = options.map((option, i) => {
       if (i === id) return { ...option, selected: true };
       else return { ...option, selected: false };
     });
-    setOptions(tempOption);
+    dispatch(setShippingOptions(tempOption));
   };
+
+  const nextButtonDisabled =
+    options.find((val) => val.selected) && address ? false : true;
 
   return (
     <div className={styles.shipping}>
@@ -97,8 +145,10 @@ function Shipping() {
           id="setAddress"
           placeholder="Example: 127 York Street, CA."
           className={styles.addressInput}
+          onInput={(e) => dispatch(setShippingAddress(e.target.value))}
         />
       </div>
+
       <div>
         <div className={styles.header}>Set Delivery Method</div>
         <div className={styles.radioFieldContainer}>
@@ -117,11 +167,23 @@ function Shipping() {
           ))}
         </div>
       </div>
+
+      <Button
+        variant="contained"
+        className={styles.nextButton}
+        onClick={next}
+        disabled={nextButtonDisabled}
+      >
+        Next
+      </Button>
     </div>
   );
 }
 
-function Summary() {
+function Summary({ next }) {
+  const shippingAddress = useSelector((state) => state.checkout.shipping.address);
+  const shippingOptions = useSelector((state) => state.checkout.shipping.options);
+  const billingOptions = useSelector((state) => state.checkout.billing.options);
   const cart = useSelector((state) => state.cart.value);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
   const data = cart.map((item) => {
@@ -138,16 +200,26 @@ function Summary() {
     <div className={styles.summary}>
       <div>
         <h3>Summary</h3>
-        <ProductsTable products={data} totalAmount={totalAmount} />
+        <ProductsTable
+          products={data}
+          totalAmount={totalAmount}
+          includeShipping={
+            shippingOptions.find((val) => val.selected).title === "Express Delivery"
+          }
+        />
       </div>
       <div>
         <h3>Shipping Address</h3>
-        <p>124 York Street, CA</p>
+        <p>{shippingAddress}</p>
       </div>
       <div>
         <h3>Payment Method</h3>
-        <p>Payment Method</p>
+        <p>{billingOptions.find((val) => val.selected).title}</p>
       </div>
+
+      <Button variant="contained" className={styles.nextButton} onClick={next}>
+        Checkout (${totalAmount})
+      </Button>
     </div>
   );
 }
