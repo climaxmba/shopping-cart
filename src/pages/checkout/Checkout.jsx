@@ -200,7 +200,6 @@ function Summary({ next }) {
   );
   const billingOptions = useSelector((state) => state.checkout.billing.options);
   const cart = useSelector((state) => state.cart.value);
-  const totalAmount = useSelector((state) => state.cart.totalAmount);
   const data = cart.map((item) => {
     return {
       id: item.id,
@@ -211,6 +210,11 @@ function Summary({ next }) {
     };
   });
 
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const includeShipping =
+    shippingOptions.find((val) => val.selected).title === "Express Delivery" &&
+    cart.length;
+
   return (
     <div className={styles.summary}>
       <div>
@@ -218,10 +222,7 @@ function Summary({ next }) {
         <ProductsTable
           products={data}
           totalAmount={totalAmount}
-          includeShipping={
-            shippingOptions.find((val) => val.selected).title ===
-            "Express Delivery"
-          }
+          includeShipping={includeShipping}
         />
       </div>
       <div>
@@ -234,7 +235,11 @@ function Summary({ next }) {
       </div>
 
       <Button variant="contained" className={styles.nextButton} onClick={next}>
-        Checkout (${totalAmount})
+        Checkout ($
+        {includeShipping
+          ? (parseFloat(totalAmount) + 15).toFixed(2)
+          : totalAmount}
+        )
       </Button>
     </div>
   );
