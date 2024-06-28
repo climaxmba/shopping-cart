@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setBillingOptions,
   setShippingAddress,
   setShippingOptions,
+  resetCheckout,
+  resetCart,
 } from "../../_redux/store";
-import { useState } from "react";
 import { Button } from "@mui/material";
 import Icon from "@mdi/react";
 
@@ -13,8 +15,11 @@ import ProductsTable from "../../components/productsTable/ProductTable";
 import Stepper from "../../components/stepper/Stepper";
 
 import styles from "./checkout.module.scss";
+import ModalCheckout from "../../components/modalCheckout/ModalCheckout";
 
 export default function Checkout() {
+  const dispatch = useDispatch();
+  const [modalOpen, setModalOpen] = useState(false);
   const [pages, setPages] = useState([
     {
       element: Billing,
@@ -58,8 +63,13 @@ export default function Checkout() {
       );
     } else {
       setPages(tempPages);
-      // checkout
+      setModalOpen(true);
     }
+  };
+
+  const handleModalClose = () => {
+    dispatch(resetCheckout());
+    dispatch(resetCart());
   };
 
   return (
@@ -67,6 +77,7 @@ export default function Checkout() {
       <h2>Checkout</h2>
       <Stepper pages={pages} />
       <ActivePage next={next} />
+      <ModalCheckout open={modalOpen} onClose={handleModalClose} />
     </div>
   );
 }
@@ -181,8 +192,12 @@ function Shipping({ next }) {
 }
 
 function Summary({ next }) {
-  const shippingAddress = useSelector((state) => state.checkout.shipping.address);
-  const shippingOptions = useSelector((state) => state.checkout.shipping.options);
+  const shippingAddress = useSelector(
+    (state) => state.checkout.shipping.address
+  );
+  const shippingOptions = useSelector(
+    (state) => state.checkout.shipping.options
+  );
   const billingOptions = useSelector((state) => state.checkout.billing.options);
   const cart = useSelector((state) => state.cart.value);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
@@ -204,7 +219,8 @@ function Summary({ next }) {
           products={data}
           totalAmount={totalAmount}
           includeShipping={
-            shippingOptions.find((val) => val.selected).title === "Express Delivery"
+            shippingOptions.find((val) => val.selected).title ===
+            "Express Delivery"
           }
         />
       </div>

@@ -1,20 +1,25 @@
 /* eslint-disable react/prop-types */
-import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom"
+import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Modal, Box, Button } from "@mui/material";
 import Icon from "@mdi/react";
 import { mdiClose } from "@mdi/js";
 
 import styles from "./modalCheckout.module.scss";
 
-export default function ModalCheckout({ open, onClose }) {
+export default function ModalCheckout({ open = false, onClose }) {
   const [isOpen, setIsOpen] = useState(open);
   const modalRef = useRef(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setIsOpen(open);
+  }, [open]);
+
   const handleClose = () => {
     setIsOpen(false);
     onClose?.();
-    navigate("/products")
+    navigate("/products");
   };
   const handleBackdropClick = (event) => {
     if (event.target !== event.currentTarget) return; // Ignore clicks on modal content
@@ -64,15 +69,15 @@ export default function ModalCheckout({ open, onClose }) {
             via GIPHY
           </a>
         </div>
-        <p id="checkout-modal-description">
-          Please wait for delivery.
-        </p>
+        <p id="checkout-modal-description">Please wait for delivery.</p>
 
         <Button
+        variant="contained"
           sx={{
-            color: "maroon",
+            bgcolor: "maroon",
+            textTransform: "unset",
             ":focus": { outline: "none" },
-            ":hover": { bgcolor: "pink" },
+            ":hover": { bgcolor: "indianred" },
           }}
           onClick={handleClose}
         >

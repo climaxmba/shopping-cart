@@ -57,6 +57,11 @@ const cartSlice = createSlice({
       state.totalAmount = calcTotal(newCart);
       storage.setCart(newCart);
     },
+    resetCart: (state) => {
+      state.totalAmount = "0.00";
+      state.value = [];
+      storage.setCart([]);
+    }
   },
 });
 

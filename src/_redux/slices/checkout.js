@@ -6,9 +6,7 @@ import {
   mdiWalletOutline,
 } from "@mdi/js";
 
-const checkoutSlice = createSlice({
-  name: "checkout",
-  initialState: {
+const initialState = {
     billing: {
       options: [
         {
@@ -42,7 +40,11 @@ const checkoutSlice = createSlice({
         },
       ],
     },
-  },
+  }
+
+const checkoutSlice = createSlice({
+  name: "checkout",
+  initialState,
   reducers: {
     setBillingOptions: (state, action) => {
       state.billing.options = action.payload;
@@ -53,6 +55,10 @@ const checkoutSlice = createSlice({
     setShippingAddress: (state, action) => {
       state.shipping.address = action.payload;
     },
+    resetCheckout: (state) => {
+      // eslint-disable-next-line no-unused-vars
+      state = initialState;
+    }
   },
 });
 
