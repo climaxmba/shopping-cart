@@ -3,6 +3,7 @@ $theme-color: maroon;
 .ctaContainer {
   display: flex;
   align-items: center;
+  max-width: 380px;
 
   button {
     flex: 1 0 100px;

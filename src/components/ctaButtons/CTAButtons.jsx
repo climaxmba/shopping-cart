@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Icon from "@mdi/react";
 import { mdiHeart, mdiHeartOutline, mdiMinus, mdiPlus } from "@mdi/js";
-import styles from "./ctaButton.module.scss";
+import styles from "./ctaButtons.module.scss";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,20 +11,6 @@ import {
   like,
   unLike,
 } from "../../_redux/store";
-
-// function Test() {
-//   const dispatch = useDispatch();
-//   const userName = useSelector(state => state.user.value.userName)
-
-//   return (
-//     <div>
-//       <p>{userName}</p>
-//       <button onClick={() => dispatch(login({ userName: "value" }))}>
-//         Click me
-//       </button>
-//     </div>
-//   );
-// }
 
 export default function CTAButtons({ id, title, price, image }) {
   const dispatch = useDispatch();
@@ -38,7 +24,11 @@ export default function CTAButtons({ id, title, price, image }) {
   return (
     <div className={styles.ctaContainer}>
       <AddToCart id={id} title={title} price={price} image={image} />
-      <span title={liked ? "Unlike" : "Like"} className={styles.likeContainer} onClick={handleLike}>
+      <span
+        title={liked ? "Unlike" : "Like"}
+        className={styles.likeContainer}
+        onClick={handleLike}
+      >
         <Icon
           path={liked ? mdiHeart : mdiHeartOutline}
           size={1.2}

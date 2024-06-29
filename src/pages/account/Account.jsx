@@ -1,25 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
-import Button from "../../components/button/Button";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "../../_redux/store";
+import { Button } from "@mui/material";
 import styles from "./account.module.scss";
 
-import { login, logout } from "../../_redux/store";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-
-// function Test() {
-//   const dispatch = useDispatch();
-//   const userName = useSelector(state => state.user.value.userName)
-
-//   return (
-//     <div>
-//       <p>{userName}</p>
-//       <button onClick={() => dispatch(login({ userName: "value" }))}>
-//         Click me
-//       </button>
-//     </div>
-//   );
-// }
 
 function Account() {
   const { name } = useParams();
@@ -88,7 +74,9 @@ function SignUp() {
         />
       </div>
 
-      <Button type="submit" text="Sign Up" fill />
+      <Button variant="contained" type="submit" className={styles.fillButton}>
+        Sign Up
+      </Button>
     </form>
   );
 }
@@ -118,14 +106,16 @@ function SignIn() {
         />
       </div>
 
-      <Button type="submit" text="Sign In" fill />
+      <Button variant="contained" type="submit" className={styles.fillButton}>
+        Sign In
+      </Button>
     </form>
   );
 }
 
 function Auth({ tab = "signin" }) {
   return !(tab === "signin" || tab === "signup") ? (
-    <Navigate to={"/account/signin"} />
+    <Navigate to="/account/signin" />
   ) : (
     <div className={styles.auth}>
       <div className={styles.authTabs}>
@@ -156,7 +146,7 @@ function Details() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const none = "None";
+  const none = <span style={{fontStyle: "italic"}}>None</span>;
 
   const handleLogout = () => {
     dispatch(logout());
@@ -197,17 +187,12 @@ function Details() {
         <div>{address || none}</div>
       </div>
 
-      <Button
-        text="Log out"
-        fill
-        onClick={handleLogout}
-        className={styles.logout}
-      />
-      <Button
-        text="Reset Data"
-        className={styles.reset}
-        onClick={handleReset}
-      />
+      <Button variant="outlined" onClick={handleLogout} className={styles.logout}>
+        Log out
+      </Button>
+      <Button variant="contained" onClick={handleReset} className={styles.reset}>
+        Reset Data
+      </Button>
     </div>
   );
 }

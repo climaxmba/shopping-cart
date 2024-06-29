@@ -1,9 +1,26 @@
+$border-spacing: 1rem 2rem;
+$theme-red: maroon;
+$theme-darkred: darken($color: $theme-red, $amount: 4);
+
 @mixin flex-col {
   display: flex;
   flex-direction: column;
 }
 
-$border-spacing: 1rem 2rem;
+@mixin button {
+  &:focus {
+    outline: none
+  }
+}
+
+.fillButton {
+  @include button();
+  background-color: $theme-red !important;
+
+  &:hover {
+    background-color: $theme-darkred !important;
+  }
+}
 
 /* Details */
 .details {
@@ -14,7 +31,7 @@ $border-spacing: 1rem 2rem;
 }
 
 .heading {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .field {
@@ -25,12 +42,30 @@ $border-spacing: 1rem 2rem;
   }
 
   & > div:last-child {
-    font-size: x-large;
+    font-size: large;
+    font-weight: 500;
   }
 }
 
-.logout, .reset {
-  max-width: 320px
+.logout {
+  @include button();
+  max-width: 320px !important;
+  color: $theme-red !important;
+  border-color: $theme-red !important;
+
+  &:hover {
+    background-color: lighten($color: $theme-red, $amount: 65) !important;
+  }
+}
+
+.reset {
+  @include button();
+  max-width: 320px !important;
+  background-color: $theme-red !important;
+  
+  &:hover {
+    background-color: $theme-darkred !important;
+  }
 }
 
 /* Auth */

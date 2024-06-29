@@ -1,3 +1,5 @@
+$theme-red: maroon;
+
 .container {
   padding: 1rem 2rem;
 }
@@ -6,4 +8,12 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.proceedToCheckout {
+  background-color: $theme-red !important;
+
+  &:hover {
+    background-color: darken($color: $theme-red, $amount: 4) !important;
+  }
 }

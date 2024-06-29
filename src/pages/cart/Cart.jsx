@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "./cart.module.scss";
-import Button from "../../components/button/Button";
+import { Button } from "@mui/material";
 import { ShopItemHorizontal } from "../../components/shopItem/ShopItem";
 
 function Cart() {
@@ -13,7 +13,7 @@ function Cart() {
       title: item.title,
       price: item.price,
       quantity: item.quantity,
-      image: item.image
+      image: item.image,
     };
   });
   const navigate = useNavigate();
@@ -23,11 +23,17 @@ function Cart() {
       <h2>Cart</h2>
       <CartList products={data} />
       <Button
-        text={"Proceed to Checkout"}
-        style={{ margin: "1.5rem 0" }}
+        variant="contained"
+        sx={{
+          margin: "1.5rem 0",
+          textTransform: "none",
+          ":focus": { outline: "none" },
+        }}
         onClick={() => navigate("/checkout")}
-        fill
-      />
+        className={styles.proceedToCheckout}
+      >
+        Proceed to Checkout
+      </Button>
     </div>
   );
 }
