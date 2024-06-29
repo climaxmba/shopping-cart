@@ -4,12 +4,13 @@ $theme-lightred: lighten(
   $color: $theme-red,
   $amount: 72,
 );
+$page-width: 300px;
 
 @mixin checkout-pages() {
   background-color: white;
   border-radius: 8px;
   padding: 1rem;
-  width: 300px;
+  width: $page-width;
 
   .nextButton {
     background-color: $theme-red;
@@ -33,6 +34,11 @@ $theme-lightred: lighten(
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.previousButtonContainer {
+  width: $page-width;
+  margin: 0.5rem 0;
 }
 
 .shipping {
@@ -79,6 +85,25 @@ $theme-lightred: lighten(
 
     &:hover {
       background-color: darken($color: $theme-green, $amount: 3);
+    }
+  }
+
+  .shippingAndPayment {
+    margin: 2rem 0;
+    display: grid;
+    gap: 1rem;
+
+    h4 {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 6px 0;
+    }
+    
+    p {
+      margin: 6px;
+      margin-left: 2rem;
+      color: green;
     }
   }
 }

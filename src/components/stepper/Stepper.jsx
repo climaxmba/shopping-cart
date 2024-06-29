@@ -1,14 +1,15 @@
 /* eslint-disable react/prop-types */
 import Icon from "@mdi/react";
-import { mdiCheck } from "@mdi/js";
+import { mdiCheck, mdiCircle } from "@mdi/js";
 import styles from "./stepper.module.scss";
 
 export default function Stepper({ pages }) {
   return (
     <div className={styles.stepperContainer}>
       {pages.map((page, i) => (
-        <>
-          <div key={i} className={styles.circle}>
+        <EmptyElement key={i}>
+          <div data-text={page.text} className={styles.circle}>
+            <span></span>
             {page.completed ? (
               <Icon
                 color="white"
@@ -17,7 +18,7 @@ export default function Stepper({ pages }) {
                   border: "5px solid lawngreen",
                   borderRadius: "50%",
                 }}
-                path={mdiCheck}
+                path={page.isActive ? mdiCircle : mdiCheck}
               />
             ) : page.isActive ? (
               <div className={styles.active}></div>
@@ -32,8 +33,13 @@ export default function Stepper({ pages }) {
           ) : (
             <></>
           )}
-        </>
+        </EmptyElement>
       ))}
     </div>
   );
+}
+
+/** This allows the element `<></>` to recieve props like `key` */
+function EmptyElement({ children }) {
+  return <>{children}</>;
 }

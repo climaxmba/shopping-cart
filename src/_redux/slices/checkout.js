@@ -7,40 +7,42 @@ import {
 } from "@mdi/js";
 
 const initialState = {
-    billing: {
-      options: [
-        {
-          title: "e-Wallet",
-          info: "The amount would be deducted right away from your wallet.",
-          selected: false,
-          icon: mdiWalletOutline,
-        },
-        {
-          title: "Pay with Cash",
-          info: "You pay with cash, after delivery.",
-          selected: false,
-          icon: mdiCash,
-        },
-      ],
-    },
-    shipping: {
-      address: "",
-      options: [
-        {
-          title: "Express Delivery",
-          info: "Your order would be delivered to your house, this attracts a delivery fee of $15.",
-          selected: false,
-          icon: mdiTruckOutline,
-        },
-        {
-          title: "Pickup Location",
-          info: "You visit a store close to you to recieve your order. No delivery fee required.",
-          selected: false,
-          icon: mdiStoreOutline,
-        },
-      ],
-    },
-  }
+  billing: {
+    options: [
+      {
+        method: "e-Wallet",
+        title: "Use e-Wallet",
+        info: "The amount would be deducted right away from your wallet.",
+        selected: false,
+        icon: mdiWalletOutline,
+      },
+      {
+        method: "Cash",
+        title: "Pay with Cash",
+        info: "You pay with cash, after delivery.",
+        selected: false,
+        icon: mdiCash,
+      },
+    ],
+  },
+  shipping: {
+    address: "",
+    options: [
+      {
+        title: "Express Delivery",
+        info: "Your order would be delivered to your house, this attracts a delivery fee of $15.",
+        selected: false,
+        icon: mdiTruckOutline,
+      },
+      {
+        title: "Pickup Location",
+        info: "You visit a store close to you to recieve your order. No delivery fee required.",
+        selected: false,
+        icon: mdiStoreOutline,
+      },
+    ],
+  },
+};
 
 const checkoutSlice = createSlice({
   name: "checkout",
@@ -58,7 +60,7 @@ const checkoutSlice = createSlice({
     resetCheckout: (state) => {
       // eslint-disable-next-line no-unused-vars
       state = initialState;
-    }
+    },
   },
 });
 

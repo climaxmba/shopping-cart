@@ -3,9 +3,9 @@ $theme-green: lawngreen;
 .stepperContainer {
   display: flex;
   align-items: center;
-  justify-self: center;
   margin: 1rem;
-  width: 100%;
+  margin-bottom: 3rem;
+  width: 90%;
   max-width: 500px;
   position: relative;
   
@@ -31,6 +31,15 @@ $theme-green: lawngreen;
   color: #fff;
   font-weight: bold;
   background-color: #ddd;
+
+  &::after {
+    position: absolute;
+    content: attr(data-text);
+    text-wrap: nowrap;
+    font-weight: 500;
+    color: black;
+    transform: translateY(35px);
+  }
 }
 
 .completedLine, .uncompletedLine {

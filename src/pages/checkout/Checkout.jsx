@@ -10,28 +10,36 @@ import {
 } from "../../_redux/store";
 import { Button } from "@mui/material";
 import Icon from "@mdi/react";
+import {
+  mdiArrowLeftThin,
+  mdiCurrencyUsd,
+  mdiMapMarkerOutline,
+} from "@mdi/js";
 
 import ProductsTable from "../../components/productsTable/ProductTable";
 import Stepper from "../../components/stepper/Stepper";
+import ModalCheckout from "../../components/modalCheckout/ModalCheckout";
 
 import styles from "./checkout.module.scss";
-import ModalCheckout from "../../components/modalCheckout/ModalCheckout";
 
 export default function Checkout() {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   const [pages, setPages] = useState([
     {
+      text: "Billing",
       element: Billing,
       isActive: true,
       completed: false,
     },
     {
+      text: "Shipping",
       element: Shipping,
       isActive: false,
       completed: false,
     },
     {
+      text: "Summary",
       element: Summary,
       isActive: false,
       completed: false,
@@ -67,6 +75,23 @@ export default function Checkout() {
     }
   };
 
+  const prev = () => {
+    if (activeIndex > 0) {
+      const tempPages = [...pages];
+
+      for (let i = 0; i < pages.length; i++) {
+        const page = pages[i];
+        if (page.isActive) {
+          tempPages[i - 1] = { ...pages[i - 1], isActive: true };
+          tempPages[i] = { ...page, isActive: false };
+          break;
+        }
+      }
+
+      setPages(tempPages);
+    }
+  };
+
   const handleModalClose = () => {
     dispatch(resetCheckout());
     dispatch(resetCart());
@@ -76,8 +101,30 @@ export default function Checkout() {
     <div className={styles.container}>
       <h2>Checkout</h2>
       <Stepper pages={pages} />
+      <PreviousButton onClick={prev} disabled={activeIndex === 0} />
       <ActivePage next={next} />
       <ModalCheckout open={modalOpen} onClose={handleModalClose} />
+    </div>
+  );
+}
+
+function PreviousButton({ onClick, disabled }) {
+  return (
+    <div className={styles.previousButtonContainer}>
+      <Button
+        sx={{
+          color: "#444",
+          ":hover": {
+            bgcolor: "#eee",
+          },
+          ":focus": { outline: "none" },
+        }}
+        startIcon={<Icon path={mdiArrowLeftThin} size={1} />}
+        onClick={onClick}
+        disabled={disabled}
+      >
+        <span style={{ transform: "translateY(2px)" }}>Back</span>
+      </Button>
     </div>
   );
 }
@@ -156,6 +203,7 @@ function Shipping({ next }) {
           id="setAddress"
           placeholder="Example: 127 York Street, CA."
           className={styles.addressInput}
+          value={address}
           onInput={(e) => dispatch(setShippingAddress(e.target.value))}
         />
       </div>
@@ -225,17 +273,23 @@ function Summary({ next }) {
           includeShipping={includeShipping}
         />
       </div>
-      <div>
-        <h3>Shipping Address</h3>
-        <p>{shippingAddress}</p>
-      </div>
-      <div>
-        <h3>Payment Method</h3>
-        <p>{billingOptions.find((val) => val.selected).title}</p>
+      <div className={styles.shippingAndPayment}>
+        <div>
+          <h4>
+            <Icon path={mdiMapMarkerOutline} size={1} /> Shipping Address
+          </h4>
+          <p>{shippingAddress}</p>
+        </div>
+        <div>
+          <h4>
+            <Icon path={mdiCurrencyUsd} size={1} /> Payment Method
+          </h4>
+          <p>{billingOptions.find((val) => val.selected).method}</p>
+        </div>
       </div>
 
       <Button variant="contained" className={styles.nextButton} onClick={next}>
-        Checkout ($
+        Place Order ($
         {includeShipping
           ? (parseFloat(totalAmount) + 15).toFixed(2)
           : totalAmount}

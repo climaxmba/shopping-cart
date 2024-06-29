@@ -8,7 +8,7 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-import styles from "./productsTable.module.scss";
+import styles from "./productTable.module.scss";
 
 export default function ProductsTable({
   products,
