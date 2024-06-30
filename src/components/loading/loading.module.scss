@@ -1,3 +1,5 @@
+$ring-color: #ff009d80;
+
 @mixin place() {
   position: absolute;
   top: 50%;
@@ -21,25 +23,25 @@
 
 .rings {
   position: absolute;
-  height: 80px;
-  width: 80px;
+  height: 75px;
+  width: 75px;
   border-radius: 50%;
   animation: scale ease-in-out infinite;
 
   &:first-child {
-    border: 5px solid #ff009d80;
+    border: 5px solid $ring-color;
     animation-duration: 3s;
     animation-timing-function: ease-in;
   }
 
   &:nth-child(2) {
-    border: 3px solid #ff009d80;
+    border: 3px solid $ring-color;
     animation-duration: 2s;
     animation-direction: alternate;
   }
 
   &:last-child {
-    border: 2px solid #ff009d80;
+    border: 2px solid $ring-color;
     animation-duration: 2.5s;
     animation-timing-function: linear;
   }

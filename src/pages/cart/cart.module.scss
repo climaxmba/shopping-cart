@@ -1,4 +1,4 @@
-$theme-red: maroon;
+$theme-green: limegreen;
 
 .container {
   padding: 1rem 2rem;
@@ -11,9 +11,9 @@ $theme-red: maroon;
 }
 
 .proceedToCheckout {
-  background-color: $theme-red !important;
+  background-color: $theme-green !important;
 
   &:hover {
-    background-color: darken($color: $theme-red, $amount: 4) !important;
+    background-color: darken($color: $theme-green, $amount: 4) !important;
   }
 }

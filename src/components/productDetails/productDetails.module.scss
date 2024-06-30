@@ -1,25 +1,31 @@
 $padding: 0 0.8rem;
 
-.container {
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.description {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding: $padding;
+@mixin rounded-box() {
+  background-color: white;
+  border-radius: 4px;
+  padding: 1rem !important;
+  display: grid;
+  gap: 0.5rem;
 
   h2 {
     margin: 0;
   }
 }
 
-.ratingContainer {
+.container {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   padding: $padding;
+}
+
+.description {
+  @include rounded-box();
+}
+
+.ratingContainer {
+  @include rounded-box();
 
   .rating {
     display: flex;

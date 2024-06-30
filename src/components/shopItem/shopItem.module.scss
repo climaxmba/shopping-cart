@@ -20,6 +20,10 @@ $theme-green: seagreen;
     }
   }
 
+  .productName {
+    font-weight: 500;
+  }
+
   & > div:not(.imgContainer) {
     padding: 0.5rem 0.3rem;
   }
@@ -47,20 +51,23 @@ $theme-green: seagreen;
   }
 }
 
+$spacing: 8px;
 .containerHorizontal {
   @include container();
   flex-direction: row;
-  gap: 8px;
-  max-width: 98%;
+  gap: $spacing;
+  max-width: 520px;
 
   & > *:last-child {
     flex: 1;
     overflow-x: hidden;
     overflow-y: hidden;
+    padding: $spacing 0;
+    padding-right: $spacing;
   }
 
   .imgContainer {
-    flex: 0 0 100px;
+    flex: 0 0 calc(($spacing * 2) + 100px);
 
     img {
       width: 100%;
@@ -70,6 +77,7 @@ $theme-green: seagreen;
   }
 
   .productName {
+    font-weight: 500;
     text-wrap: nowrap;
     text-overflow: ellipsis;
     overflow-x: hidden;
