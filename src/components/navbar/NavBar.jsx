@@ -9,7 +9,11 @@ export default function NavBar({ setMenuOpen, menuOpen }) {
   const handleMenuClick = () => setMenuOpen((val) => !val);
   return (
     <nav className={styles.navBar}>
-      <span title="Menu" className={`${styles.menu} ${menuOpen && styles.menuOpen}`} onClick={handleMenuClick}>
+      <span
+        title="Menu"
+        className={`${styles.menu} ${menuOpen && styles.menuOpen}`}
+        onClick={handleMenuClick}
+      >
         <span></span>
         <span></span>
         <span></span>

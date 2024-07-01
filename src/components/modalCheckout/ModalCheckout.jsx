@@ -53,7 +53,7 @@ export default function ModalCheckout({ open = false, onClose }) {
         }}
       >
         <div className={styles.titleWithClose}>
-          <span title="Close" tabIndex={0} onClick={handleClose}>
+          <span title="Close" onClick={handleClose}>
             <Icon path={mdiClose} size={1} />
           </span>
           <h2 id="checkout-modal-title">Order Placed!</h2>

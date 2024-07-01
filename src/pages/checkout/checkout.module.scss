@@ -98,7 +98,7 @@ $page-width: 300px;
       gap: 6px;
       margin: 6px 0;
     }
-    
+
     p {
       margin: 6px;
       margin-left: 2rem;
@@ -112,6 +112,8 @@ $page-width: 300px;
   gap: 8px;
 
   .radioField {
+    text-align: left;
+    font-weight: 400;
     display: grid;
     grid-template: auto 1fr / auto 1fr;
     gap: 1px 8px;
@@ -119,6 +121,7 @@ $page-width: 300px;
     border: 1px solid transparent;
     padding: 8px;
     cursor: pointer;
+    background-color: transparent;
     transition: background-color ease-out 0.2s;
 
     &:hover {

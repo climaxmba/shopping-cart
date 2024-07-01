@@ -51,7 +51,6 @@ export default function RootLayout({ children, menuStates }) {
         )}
         <section id="outlet-sectn">{children}</section>
       </main>
-      {/* footer */}
     </>
   );
 }

@@ -47,14 +47,23 @@ $theme-color: maroon;
     cursor: default;
   }
 
-  & > *:not(.quantityText) {
+  button {
+    flex: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: $theme-color;
     border-radius: 4px;
     padding: 4px;
-    cursor: pointer;
+    border: none;
+
+    &:hover {
+      background-color: darken($color: $theme-color, $amount: 4);
+    }
+
+    &:active {
+      background-color: lighten($color: $theme-color, $amount: 8);
+    }
   }
 }
 

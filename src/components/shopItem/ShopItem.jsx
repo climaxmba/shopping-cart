@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useDispatch } from "react-redux";
 import { like, unLike } from "../../_redux/store";
-import { useParams, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { mdiHeart, mdiHeartOutline } from "@mdi/js";
 import Icon from "@mdi/react";
 import { Rating } from "@mui/material";
@@ -11,22 +11,28 @@ import styles from "./shopItem.module.scss";
 
 const currency = "$";
 
-export default function ShopItem({ id, title, price, image, rating, liked = false }) {
+export default function ShopItem({
+  id,
+  title,
+  price,
+  image,
+  rating,
+  liked = false,
+}) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { productId } = useParams();
 
   const handleLike = (e) => {
-    dispatch(liked ? unLike(id) : like(id));
+    e.preventDefault();
     e.stopPropagation();
+    dispatch(liked ? unLike(id) : like(id));
   };
 
   return (
-    <div
-      className={`${styles.containerPortrait} ${
-        parseInt(productId) === id ? styles.isSelected : ""
-      }`}
-      onClick={() => navigate(id.toString())}
+    <NavLink
+      to={id.toString()}
+      className={({ isActive }) =>
+        `${styles.containerPortrait} ${isActive ? styles.isSelected : ""}`
+      }
     >
       <span
         title={liked ? "Unlike" : "Like"}
@@ -49,7 +55,7 @@ export default function ShopItem({ id, title, price, image, rating, liked = fals
         <div className={styles.price}>{`${currency}${price}`}</div>
         <Rating value={rating.rate} precision={0.1} readOnly />
       </div>
-    </div>
+    </NavLink>
   );
 }
 

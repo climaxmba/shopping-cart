@@ -63,15 +63,15 @@ export function AddToCart({ id, title, price, image }) {
     <>
       {item ? (
         <div className={styles.cartQuantityContainer}>
-          <span title="Decrease Quantity" onClick={handleDecrement}>
+          <button title="Decrease Quantity" onClick={handleDecrement} tabIndex={0}>
             <Icon size={1} path={mdiMinus} color="white" />
-          </span>
+          </button>
           <span title="Item Quantity" className={styles.quantityText}>
             {item.quantity}
           </span>
-          <span title="Increase Quantity" onClick={handleIncrement}>
+          <button title="Increase Quantity" onClick={handleIncrement} tabIndex={0}>
             <Icon size={1} path={mdiPlus} color="white" />
-          </span>
+          </button>
         </div>
       ) : (
         <button

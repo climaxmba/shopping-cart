@@ -32,6 +32,7 @@ $theme-green: seagreen;
 .containerPortrait {
   @include container();
   position: relative;
+  color: inherit;
   box-shadow: 0 1px 5px 2px #00000020;
 
   .imgContainer {

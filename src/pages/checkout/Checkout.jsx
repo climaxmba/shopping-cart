@@ -148,17 +148,18 @@ function Billing({ next }) {
       <h3>Set Payment Method</h3>
       <div className={styles.radioFieldContainer}>
         {options.map((option, i) => (
-          <div
+          <button
             key={option.title}
             className={`${styles.radioField} ${
               option.selected ? styles.selected : ""
             }`}
             onClick={() => selectOption(i)}
+            tabIndex={0}
           >
             <Icon path={option.icon} color={"black"} size={1} />
             <div className={styles.title}>{option.title}</div>
             <span className={styles.info}>{option.info}</span>
-          </div>
+          </button>
         ))}
       </div>
 
@@ -212,17 +213,18 @@ function Shipping({ next }) {
         <div className={styles.header}>Set Delivery Method</div>
         <div className={styles.radioFieldContainer}>
           {options.map((option, i) => (
-            <div
+            <button
               key={option.title}
               className={`${styles.radioField} ${
                 option.selected ? styles.selected : ""
               }`}
               onClick={() => selectOption(i)}
+              tabIndex={0}
             >
               <Icon path={option.icon} color={"black"} size={1} />
               <div className={styles.title}>{option.title}</div>
               <span className={styles.info}>{option.info}</span>
-            </div>
+            </button>
           ))}
         </div>
       </div>
