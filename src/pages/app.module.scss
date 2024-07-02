@@ -1,7 +1,6 @@
 .root {
   height: 100%;
   width: 100%;
-  background: linear-gradient(60deg, purple, pink);
 }
 
 .ctaContainer {
@@ -9,9 +8,32 @@
   flex-direction: column;
   align-items: start;
   gap: 0.4rem;
-  max-width: 300px;
-  margin-top: 45svh;
-  margin-left: 5rem;
+  position: relative;
+  padding: 45vh 1rem 3rem 5rem;
+
+  & > *:not(.imageContainer) {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.imageContainer {
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(purple, pink);
+
+  img {
+    height: 100%;
+    width: 100%;
+    filter: brightness(0.7);
+    object-position: top;
+    object-fit: cover;
+  }
 }
 
 .text {
@@ -21,11 +43,17 @@
   font-weight: 600;
   text-shadow: 1px 1px #00000020;
   text-align: left;
+
+  // Ensure uniform appearance
+  display: flex;
+  align-items: flex-end;
+  min-height: 144px;
+  max-width: 300px;
 }
 
 @media screen and (width <= 425px) {
   .ctaContainer {
-    margin-left: 3rem;
+    padding-left: 3rem;
   }
 }
 
