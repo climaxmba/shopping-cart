@@ -55,3 +55,15 @@ $menu-width: 32px;
     }
   }
 }
+
+.logo {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+@media screen and (width < 768px) {
+  .logo > *:last-child {
+    display: none;
+  }
+}

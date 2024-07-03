@@ -71,6 +71,7 @@ export default function App() {
   ];
 
   return (
+    <>
     <Carousel
       interval={8000}
       transitionTime={1000}
@@ -93,5 +94,8 @@ export default function App() {
         />
       ))}
     </Carousel>
+    <div>Image Credits</div>
+    <div>Footer</div>
+    </>
   );
 }
