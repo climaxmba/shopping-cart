@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
 import Icon from "@mdi/react";
 import {
   mdiAccount,
+  mdiAccountCheck,
+  mdiAccountCheckOutline,
   mdiAccountOutline,
   mdiHome,
   mdiHomeOutline,
@@ -12,6 +15,8 @@ import {
 } from "@mdi/js";
 
 function Menu() {
+  const userName = useSelector((state) => state.user.value.userName);
+
   return (
     <>
       <NavLink className="navlink" to="/">
@@ -31,7 +36,18 @@ function Menu() {
       <NavLink className="navlink" to="/account">
         {({ isActive }) => (
           <>
-            <Icon path={isActive ? mdiAccount : mdiAccountOutline} /> Account
+            <Icon
+              path={
+                isActive
+                  ? userName
+                    ? mdiAccountCheck
+                    : mdiAccount
+                  : userName
+                  ? mdiAccountCheckOutline
+                  : mdiAccountOutline
+              }
+            />
+            Account
           </>
         )}
       </NavLink>
@@ -42,7 +58,10 @@ function Menu() {
 export default function RootLayout({ children, menuStates }) {
   return (
     <>
-      <NavBar setMenuOpen={menuStates.setMenuOpen} menuOpen={menuStates.menuOpen} />
+      <NavBar
+        setMenuOpen={menuStates.setMenuOpen}
+        menuOpen={menuStates.menuOpen}
+      />
       <main>
         {menuStates.menuOpen && (
           <section id="menu-sectn">
