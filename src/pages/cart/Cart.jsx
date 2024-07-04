@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import styles from "./cart.module.scss";
 import { Button } from "@mui/material";
 import { ShopItemHorizontal } from "../../components/shopItem/ShopItem";
+import styles from "./cart.module.scss";
 
-function Cart() {
+export default function Cart() {
   const cart = useSelector((state) => state.cart.value);
   const data = cart.map((item) => {
     return {
@@ -73,5 +73,3 @@ function CartList({ products }) {
     </div>
   );
 }
-
-export default Cart;

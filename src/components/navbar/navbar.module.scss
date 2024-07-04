@@ -8,6 +8,15 @@ $menu-width: 32px;
   padding: 0.8rem;
   box-shadow: 0 1px 3px 2px #00000020;
 
+  // Positioning
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: #ffffffbf;
+  backdrop-filter: blur(15px);
+
   a {
     color: currentColor;
   }

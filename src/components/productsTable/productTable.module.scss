@@ -1,11 +1,11 @@
-$theme-red: maroon;
+$theme-black: #303030;
 
 .container {
   text-wrap: nowrap;
 }
 
 .headerRow {
-  background-color: $theme-red;
+  background-color: $theme-black;
 }
 
 .header {
@@ -20,7 +20,7 @@ $theme-red: maroon;
 }
 
 .totalCell {
-  color: $theme-red !important;
+  color: $theme-black !important;
   font-weight: 600 !important;
   font-size: large !important;
 }

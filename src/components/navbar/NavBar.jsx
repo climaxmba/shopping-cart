@@ -35,7 +35,7 @@ export default function NavBar({ setMenuOpen, menuOpen }) {
           <Badge
             badgeContent={cartLength || null}
             sx={{
-              ".MuiBadge-badge": { bgcolor: "blueviolet", color: "white" },
+              ".MuiBadge-badge": { bgcolor: "#303030", color: "white" },
             }}
           >
             <Icon path={isActive ? mdiCart : mdiCartOutline} /> Cart

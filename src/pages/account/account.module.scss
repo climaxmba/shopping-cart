@@ -1,6 +1,6 @@
 $border-spacing: 1rem 2rem;
-$theme-red: maroon;
-$theme-darkred: darken($color: $theme-red, $amount: 4);
+$theme-black: #303030;
+$theme-darkred: lighten($color: $theme-black, $amount: 4);
 
 @mixin flex-col {
   display: flex;
@@ -15,7 +15,7 @@ $theme-darkred: darken($color: $theme-red, $amount: 4);
 
 .fillButton {
   @include button();
-  background-color: $theme-red !important;
+  background-color: $theme-black !important;
 
   &:hover {
     background-color: $theme-darkred !important;
@@ -50,18 +50,18 @@ $theme-darkred: darken($color: $theme-red, $amount: 4);
 .logout {
   @include button();
   max-width: 320px !important;
-  color: $theme-red !important;
-  border-color: $theme-red !important;
+  color: $theme-black !important;
+  border-color: $theme-black !important;
 
   &:hover {
-    background-color: lighten($color: $theme-red, $amount: 65) !important;
+    background-color: lighten($color: $theme-black, $amount: 65) !important;
   }
 }
 
 .reset {
   @include button();
   max-width: 320px !important;
-  background-color: $theme-red !important;
+  background-color: $theme-black !important;
   
   &:hover {
     background-color: $theme-darkred !important;

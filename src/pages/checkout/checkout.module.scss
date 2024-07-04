@@ -1,9 +1,6 @@
-$theme-red: maroon;
+$theme-black: #303030;
 $theme-green: limegreen;
-$theme-lightred: lighten(
-  $color: $theme-red,
-  $amount: 72,
-);
+$theme-light: #eeeeee;
 $page-width: 300px;
 
 @mixin checkout-pages() {
@@ -13,12 +10,12 @@ $page-width: 300px;
   width: $page-width;
 
   .nextButton {
-    background-color: $theme-red;
+    background-color: $theme-black;
     text-transform: capitalize;
     width: 100%;
 
     &:hover {
-      background-color: darken($color: $theme-red, $amount: 3);
+      background-color: lighten($color: $theme-black, $amount: 8) !important;
     }
 
     &:focus {
@@ -125,16 +122,16 @@ $page-width: 300px;
     transition: background-color ease-out 0.2s;
 
     &:hover {
-      background-color: $theme-lightred;
+      background-color: $theme-light;
     }
 
     &:active {
-      background-color: darken($color: $theme-lightred, $amount: 10);
+      background-color: darken($color: $theme-light, $amount: 10);
     }
 
     &.selected {
-      background-color: $theme-lightred;
-      border-color: $theme-red;
+      background-color: $theme-light;
+      border-color: $theme-black;
     }
 
     .title {

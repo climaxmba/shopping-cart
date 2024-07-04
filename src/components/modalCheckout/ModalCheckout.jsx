@@ -74,10 +74,10 @@ export default function ModalCheckout({ open = false, onClose }) {
         <Button
         variant="contained"
           sx={{
-            bgcolor: "maroon",
+            bgcolor: "#303030",
             textTransform: "unset",
             ":focus": { outline: "none" },
-            ":hover": { bgcolor: "indianred" },
+            ":hover": { bgcolor: "black" },
           }}
           onClick={handleClose}
         >

@@ -1,4 +1,4 @@
-$theme-color: maroon;
+$theme-color: #303030;
 
 .ctaContainer {
   display: flex;
@@ -25,12 +25,12 @@ $theme-color: maroon;
   text-wrap: nowrap;
 
   &:hover {
-    background-color: lighten($color: $theme-color, $amount: 5%);
+    background-color: lighten($color: $theme-color, $amount: 4);
     color: white;
   }
 
   &:active {
-    background-color: darken($color: $theme-color, $amount: 5%);
+    background-color: lighten($color: $theme-color, $amount: 20);
   }
 }
 
@@ -62,7 +62,7 @@ $theme-color: maroon;
     }
 
     &:active {
-      background-color: lighten($color: $theme-color, $amount: 8);
+      background-color: lighten($color: $theme-color, $amount: 12);
     }
   }
 }

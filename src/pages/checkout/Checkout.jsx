@@ -10,11 +10,7 @@ import {
 } from "../../_redux/store";
 import { Button } from "@mui/material";
 import Icon from "@mdi/react";
-import {
-  mdiArrowLeftThin,
-  mdiCurrencyUsd,
-  mdiMapMarkerOutline,
-} from "@mdi/js";
+import { mdiArrowLeftThin, mdiCurrencyUsd, mdiMapMarkerOutline } from "@mdi/js";
 
 import ProductsTable from "../../components/productsTable/ProductTable";
 import Stepper from "../../components/stepper/Stepper";
@@ -290,7 +286,12 @@ function Summary({ next }) {
         </div>
       </div>
 
-      <Button variant="contained" className={styles.nextButton} onClick={next}>
+      <Button
+        variant="contained"
+        className={styles.nextButton}
+        onClick={next}
+        disabled={parseFloat(totalAmount) > 0 ? false : true}
+      >
         Place Order ($
         {includeShipping
           ? (parseFloat(totalAmount) + 15).toFixed(2)

@@ -1,5 +1,5 @@
 $theme-rad: 4px;
-$theme-red: maroon;
+$theme-black: #303030;
 $theme-green: seagreen;
 
 @mixin container {
@@ -86,8 +86,8 @@ $spacing: 8px;
 }
 
 .isSelected {
-  background-color: #fff1f8;
-  border: 1px solid $theme-red;
+  background-color: #efefef;
+  border: 1px solid $theme-black;
   box-shadow: none;
 }
 
@@ -108,8 +108,7 @@ $spacing: 8px;
   align-items: center;
   justify-content: center;
   align-self: stretch;
-  // temporary
-  background-color: pink;
+  background-color: white;
   border-top-right-radius: $theme-rad;
   border-top-left-radius: $theme-rad;
 }

@@ -1,4 +1,5 @@
 $theme-blue: blueviolet;
+$theme-black: #303030;
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -51,6 +52,7 @@ main {
   display: flex;
   background-color: #00000008;
   min-height: 100vh;
+  padding-top: 60px; // Offset navbar
 }
 
 #menu-sectn {
@@ -73,7 +75,7 @@ main {
 
   .navlink {
     &:hover {
-      background-color: $theme-blue;
+      background-color: $theme-black;
       color: white;
     }
 
