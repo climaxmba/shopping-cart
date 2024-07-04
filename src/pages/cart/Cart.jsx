@@ -21,19 +21,39 @@ function Cart() {
   return (
     <div className={styles.container}>
       <h2>Cart</h2>
-      <CartList products={data} />
-      <Button
-        variant="contained"
-        sx={{
-          margin: "1.5rem 0",
-          textTransform: "none",
-          ":focus": { outline: "none" },
-        }}
-        onClick={() => navigate("/checkout")}
-        className={styles.proceedToCheckout}
-      >
-        Proceed to Checkout
-      </Button>
+      {cart.length ? (
+        <>
+          <CartList products={data} />
+          <Button
+            variant="contained"
+            sx={{
+              margin: "1.5rem 0",
+              textTransform: "none",
+              ":focus": { outline: "none" },
+            }}
+            onClick={() => navigate("/checkout")}
+            className={styles.button}
+          >
+            Proceed to Checkout
+          </Button>
+        </>
+      ) : (
+        <>
+          <p>Your Cart is empty! </p>
+          <Button
+            variant="contained"
+            sx={{
+              margin: "1.5rem 0",
+              textTransform: "none",
+              ":focus": { outline: "none" },
+            }}
+            onClick={() => navigate("/products")}
+            className={styles.button}
+          >
+            Start Shopping
+          </Button>
+        </>
+      )}
     </div>
   );
 }
