@@ -1,4 +1,4 @@
-.root {
+.carousel {
   width: 100%;
 }
 
@@ -48,6 +48,49 @@
   align-items: flex-end;
   min-height: 144px;
   max-width: 300px;
+}
+
+.creditsContainer {
+  font-size: small;
+  font-style: italic;
+  text-align: center;
+  padding: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1ch;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    margin: 0;
+  }
+
+  .credits {
+    span:not(:last-child)::after {
+      content: ", ";
+    }
+  }
+}
+
+.contact {
+  padding: 2rem 0.4rem;
+  padding-bottom: 6rem;
+  text-align: center;
+
+  .icons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+
+    & > * {
+      transition: transform ease-in-out 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
 }
 
 @media screen and (width <= 425px) {

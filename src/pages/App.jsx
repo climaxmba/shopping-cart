@@ -44,7 +44,7 @@ export default function App() {
       btnUrl: "products",
       imageList: [shopNow640, shopNow1280, shopNow1920],
       imgCredit: {
-        text: "Photo by Pixabay",
+        name: "Pixabay",
         URL: "https://www.pexels.com/photo/light-trails-on-road-at-night-315939/",
       },
     },
@@ -54,7 +54,7 @@ export default function App() {
       btnUrl: "categories",
       imageList: [products640, products1280, products1920],
       imgCredit: {
-        text: "Photo by Dina Nasyrova",
+        name: "Dina Nasyrova",
         URL: "https://www.pexels.com/photo/trendy-handbag-with-sunglasses-on-knitwear-3808229/",
       },
     },
@@ -64,7 +64,7 @@ export default function App() {
       btnUrl: "products",
       imageList: [expressDelivery640, expressDelivery1280, expressDelivery1920],
       imgCredit: {
-        text: "Photo by Pexels User",
+        name: "Pexels User",
         URL: "https://www.pexels.com/photo/two-pretty-women-in-a-dress-holding-handbags-7116441/",
       },
     },
@@ -72,30 +72,59 @@ export default function App() {
 
   return (
     <>
-    <Carousel
-      interval={8000}
-      transitionTime={1000}
-      statusFormatter={(currNum, total) => `${currNum} / ${total}`}
-      swipeable={false}
-      showIndicators={false}
-      showThumbs={false}
-      autoPlay
-      infiniteLoop
-      className={styles.root}
-    >
-      {slides.map((slide) => (
-        <SlideItem
-          key={slide.para}
-          header={slide.header}
-          para={slide.para}
-          btnText={slide.btnText}
-          btnUrl={slide.btnUrl}
-          imageList={slide.imageList}
-        />
-      ))}
-    </Carousel>
-    <div>Image Credits</div>
-    <div>Footer</div>
+      <Carousel
+        interval={8000}
+        transitionTime={1000}
+        statusFormatter={(currNum, total) => `${currNum} / ${total}`}
+        swipeable={false}
+        showIndicators={false}
+        showThumbs={false}
+        autoPlay
+        infiniteLoop
+        className={styles.carousel}
+      >
+        {slides.map((slide) => (
+          <SlideItem
+            key={slide.para}
+            header={slide.header}
+            para={slide.para}
+            btnText={slide.btnText}
+            btnUrl={slide.btnUrl}
+            imageList={slide.imageList}
+          />
+        ))}
+      </Carousel>
+
+      <div className={styles.creditsContainer}>
+        <p>Image Credit:</p>
+        <div className={styles.credits}>
+          {slides.map((slide, i) => (
+            <span key={i}>
+              Photo by <a href={slide.imgCredit.URL}>{slide.imgCredit.name}</a>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.contact}>
+        <h2>Contact us</h2>
+        <div className={styles.icons}>
+          <a href="https://www.linkedin.com/in/climaxmba/" target="_blank">
+            <img
+              width={30}
+              alt="LinkedIn Profile"
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg"
+            />
+          </a>
+          <a href="https://github.com/climaxmba" target="_blank">
+            <img
+              width={30}
+              alt="GitHub Profile"
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+            />
+          </a>
+        </div>
+      </div>
     </>
   );
 }
