@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
+import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Icon from "@mdi/react";
 import { mdiCart, mdiCartOutline } from "@mdi/js";
-import { Link, NavLink } from "react-router-dom";
+import Badge from "@mui/material/Badge";
 
 import logo from "../../assets/logo.svg";
 import logoText from "../../assets/logoText.svg";
@@ -9,6 +11,8 @@ import styles from "./navbar.module.scss";
 
 export default function NavBar({ setMenuOpen, menuOpen }) {
   const handleMenuClick = () => setMenuOpen((val) => !val);
+  const cartLength = useSelector((state) => state.cart.value.length);
+
   return (
     <nav className={styles.navBar}>
       <span
@@ -28,9 +32,14 @@ export default function NavBar({ setMenuOpen, menuOpen }) {
       </Link>
       <NavLink to="/cart">
         {({ isActive }) => (
-          <>
+          <Badge
+            badgeContent={cartLength || null}
+            sx={{
+              ".MuiBadge-badge": { bgcolor: "blueviolet", color: "white" },
+            }}
+          >
             <Icon path={isActive ? mdiCart : mdiCartOutline} /> Cart
-          </>
+          </Badge>
         )}
       </NavLink>
     </nav>

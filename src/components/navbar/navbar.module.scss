@@ -8,10 +8,7 @@ $menu-width: 32px;
   padding: 0.8rem;
   box-shadow: 0 1px 3px 2px #00000020;
 
-  & > a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  a {
     color: currentColor;
   }
 
