@@ -1,15 +1,16 @@
 const storeAPI = (() => {
   async function _resource(URL) {
-    const data = await (await fetch(URL)).json();
-    return data;
+    const response = await fetch(URL);
+    if (!response.ok) throw new Error(response.status);
+    return await response.json();
   }
 
   function getProducts() {
     return new Promise((res, rej) => {
       try {
-        res(_resource('https://fakestoreapi.com/products'))
+        res(_resource("https://fakestoreapi.com/products"));
       } catch (error) {
-        rej(error)
+        rej(error);
       }
     });
   }
@@ -17,9 +18,9 @@ const storeAPI = (() => {
   function getProductById(id) {
     return new Promise((res, rej) => {
       try {
-        res(_resource(`https://fakestoreapi.com/products/${id}`))
+        res(_resource(`https://fakestoreapi.com/products/${id}`));
       } catch (error) {
-        rej(error)
+        rej(error);
       }
     });
   }
@@ -27,9 +28,11 @@ const storeAPI = (() => {
   function getProductsByCategory(category) {
     return new Promise((res, rej) => {
       try {
-        res(_resource(`https://fakestoreapi.com/products/category/${category}`))
+        res(
+          _resource(`https://fakestoreapi.com/products/category/${category}`)
+        );
       } catch (error) {
-        rej(error)
+        rej(error);
       }
     });
   }
@@ -37,9 +40,9 @@ const storeAPI = (() => {
   function getCategories() {
     return new Promise((res, rej) => {
       try {
-        res(_resource('https://fakestoreapi.com/products/categories'))
+        res(_resource("https://fakestoreapi.com/products/categories"));
       } catch (error) {
-        rej(error)
+        rej(error);
       }
     });
   }

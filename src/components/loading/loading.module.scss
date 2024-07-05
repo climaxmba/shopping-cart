@@ -1,5 +1,10 @@
 $ring-color: #20202080;
 
+@mixin root() {
+  width: 100%;
+  min-width: 300px;
+}
+
 @mixin place() {
   position: absolute;
   top: 50%;
@@ -7,9 +12,8 @@ $ring-color: #20202080;
 }
 
 .container {
+  @include root();
   height: 50vh;
-  width: 100%;
-  min-width: 320px;
   pointer-events: none;
   position: relative;
 }
@@ -52,6 +56,20 @@ $ring-color: #20202080;
   @include place();
   transform: translate(-50%, -50%);
   animation: fade 3s linear infinite;
+}
+
+.errorContainer {
+  @include root();
+  display: grid;
+  gap: 1rem;
+  align-content: center;
+  justify-items: center;
+  height: 70vh;
+  .errorMessage {
+    font-size: large;
+    text-align: center;
+    margin: 0;
+  }
 }
 
 @keyframes scale {

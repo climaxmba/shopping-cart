@@ -4,15 +4,20 @@ import storeAPI from "../../modules/storeAPI";
 
 import styles from "./categories.module.scss";
 import CategoryProducts from "./categoryProducts/CategoryProducts";
-import Loading from "../../components/loading/Loading";
+import Loading, { LoadingError } from "../../components/loading/Loading";
 
 function CategoryList() {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     (async () => {
-      setCategories(await storeAPI.getCategories());
+      try {
+        setCategories(await storeAPI.getCategories());
+      } catch {
+        setHasError(true);
+      }
       setIsLoading(false);
     })();
   }, []);
@@ -21,6 +26,8 @@ function CategoryList() {
     <>
       {isLoading ? (
         <Loading />
+      ) : hasError ? (
+        <LoadingError />
       ) : (
         <ul className={styles.categoryList}>
           {categories.map((category) => (

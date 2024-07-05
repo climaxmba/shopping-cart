@@ -2,15 +2,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopItemDetailed } from "../shopItem/ShopItem";
-import { Rating as MUIRating } from "@mui/material"
+import { Rating as MUIRating } from "@mui/material";
 import storeAPI from "../../modules/storeAPI";
 import styles from "./productDetails.module.scss";
-import Loading from "../loading/Loading";
+import Loading, { LoadingError } from "../loading/Loading";
 
 export default function ProductDetails() {
   const { productId } = useParams();
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -18,7 +19,11 @@ export default function ProductDetails() {
 
   useEffect(() => {
     (async () => {
-      setProduct(await storeAPI.getProductById(productId));
+      try {
+        setProduct(await storeAPI.getProductById(productId));
+      } catch {
+        setHasError(true);
+      }
       setIsLoading(false);
     })();
   }, [productId]);
@@ -27,6 +32,8 @@ export default function ProductDetails() {
     <>
       {isLoading ? (
         <Loading />
+      ) : hasError ? (
+        <LoadingError />
       ) : (
         <div className={styles.container}>
           <ShopItemDetailed

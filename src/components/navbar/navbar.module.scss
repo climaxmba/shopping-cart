@@ -44,6 +44,11 @@ $menu-width: 32px;
   }
 
   &.menuOpen {
+    height: $menu-width;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     & > * {
       position: absolute;
     }
