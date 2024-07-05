@@ -7,7 +7,7 @@ import App from "./pages/App";
 import Account from "./pages/account/Account";
 import Cart from "./pages/cart/Cart";
 import Categories from "./pages/categories/Categories";
-import ErrorPage from "./ErrorPage";
+import ErrorPage from "./errorPage/ErrorPage";
 import Products from "./pages/products/Products";
 import ProductDetails from "./components/productDetails/ProductDetails";
 import Checkout from "./pages/checkout/Checkout";

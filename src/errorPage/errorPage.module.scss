@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 2rem;
+  color: #303030;
+  background-color: #fcfcfc;
+  height: 100vh;
+
+  .logo {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0.8;
+    margin-bottom: 3rem;
+  }
+
+  .errorCode {
+    font-size: 6rem;
+    font-weight: 500;
+    margin: 0;
+    color: darkgrey;
+  }
+
+  h1 {
+    font-size: x-large;
+  }
+}
