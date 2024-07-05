@@ -114,18 +114,18 @@ export default function App() {
       </div>
 
       <div className={styles.contact}>
-        <h2>Contact us</h2>
+        <p>Demo project by Climax Mba</p>
         <div className={styles.icons}>
           <a href="https://www.linkedin.com/in/climaxmba/" target="_blank">
             <img
-              width={30}
+              width={25}
               alt="LinkedIn Profile"
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg"
             />
           </a>
           <a href="https://github.com/climaxmba" target="_blank">
             <img
-              width={30}
+              width={25}
               alt="GitHub Profile"
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
             />

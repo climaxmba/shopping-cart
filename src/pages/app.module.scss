@@ -53,13 +53,11 @@
 .creditsContainer {
   font-size: small;
   font-style: italic;
-  text-align: center;
-  padding: 0.4rem;
+  padding: 0.2rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1ch;
+  gap: 0 1ch;
   align-items: center;
-  justify-content: center;
 
   p {
     margin: 0;
@@ -74,8 +72,13 @@
 
 .contact {
   padding: 2rem 0.4rem;
-  padding-bottom: 6rem;
   text-align: center;
+
+  p {
+    font-size: large;
+    font-weight: 500;
+    color: #505050;
+  }
 
   .icons {
     display: flex;
