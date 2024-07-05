@@ -1,36 +1,46 @@
-// Mock data
-import { products, category, categories } from "../assets/data";
-
 const storeAPI = (() => {
-  //   async function _resource(URL) {
-  //     const data = await (await fetch(URL)).json();
-  //     return data;
-  //   }
+  async function _resource(URL) {
+    const data = await (await fetch(URL)).json();
+    return data;
+  }
 
   function getProducts() {
-    return new Promise((res) => {
-      setTimeout(() => res(products), 3000);
+    return new Promise((res, rej) => {
+      try {
+        res(_resource('https://fakestoreapi.com/products'))
+      } catch (error) {
+        rej(error)
+      }
     });
   }
 
   function getProductById(id) {
-    return new Promise((res) => {
-      setTimeout(
-        () => res(products.filter((product) => product.id === parseInt(id))[0]),
-        3000
-      );
+    return new Promise((res, rej) => {
+      try {
+        res(_resource(`https://fakestoreapi.com/products/${id}`))
+      } catch (error) {
+        rej(error)
+      }
     });
   }
 
-  function getProductsByCategory() {
-    return new Promise((res) => {
-      setTimeout(() => res(category), 3000);
+  function getProductsByCategory(category) {
+    return new Promise((res, rej) => {
+      try {
+        res(_resource(`https://fakestoreapi.com/products/category/${category}`))
+      } catch (error) {
+        rej(error)
+      }
     });
   }
 
   function getCategories() {
-    return new Promise((res) => {
-      setTimeout(() => res(categories), 3000);
+    return new Promise((res, rej) => {
+      try {
+        res(_resource('https://fakestoreapi.com/products/categories'))
+      } catch (error) {
+        rej(error)
+      }
     });
   }
 
