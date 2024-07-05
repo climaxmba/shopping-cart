@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import { useDispatch } from "react-redux";
 import { like, unLike } from "../../_redux/store";
 import { NavLink } from "react-router-dom";
 import { mdiHeart, mdiHeartOutline } from "@mdi/js";
 import Icon from "@mdi/react";
 import { Rating } from "@mui/material";
+import PropTypes from "prop-types";
 
 import CTAButtons from "../ctaButtons/CTAButtons";
 import styles from "./shopItem.module.scss";
@@ -59,6 +59,15 @@ export default function ShopItem({
   );
 }
 
+ShopItem.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  price: PropTypes.string,
+  image: PropTypes.string,
+  rating: PropTypes.number,
+  liked: PropTypes.bool,
+};
+
 export function ShopItemDetailed({ id, image, title, price }) {
   return (
     <div className={styles.containerDetailed}>
@@ -73,6 +82,13 @@ export function ShopItemDetailed({ id, image, title, price }) {
     </div>
   );
 }
+
+ShopItemDetailed.propTypes = {
+  id: PropTypes.number,
+  image: PropTypes.string,
+  title: PropTypes.string,
+  price: PropTypes.string,
+};
 
 export function ShopItemHorizontal({ id, image, title, price }) {
   return (
@@ -90,3 +106,10 @@ export function ShopItemHorizontal({ id, image, title, price }) {
     </div>
   );
 }
+
+ShopItemHorizontal.propTypes = {
+  id: PropTypes.number,
+  image: PropTypes.string,
+  title: PropTypes.string,
+  price: PropTypes.string,
+};

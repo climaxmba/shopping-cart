@@ -1,13 +1,13 @@
-/* eslint-disable react/prop-types */
 import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../../_redux/store";
 import { Button } from "@mui/material";
+
+import PropTypes from "prop-types";
 import styles from "./account.module.scss";
 
-
-function Account() {
+export default function Account() {
   const { name } = useParams();
   return <div>{name ? <Auth tab={name} /> : <Details />}</div>;
 }
@@ -139,6 +139,10 @@ function Auth({ tab = "signin" }) {
   );
 }
 
+Auth.propTypes = {
+  tab: PropTypes.string,
+};
+
 function Details() {
   const { userName, email, phone, address } = useSelector(
     (state) => state.user.value
@@ -146,7 +150,7 @@ function Details() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const none = <span style={{fontStyle: "italic"}}>None</span>;
+  const none = <span style={{ fontStyle: "italic" }}>None</span>;
 
   const handleLogout = () => {
     dispatch(logout());
@@ -187,14 +191,20 @@ function Details() {
         <div>{address || none}</div>
       </div>
 
-      <Button variant="outlined" onClick={handleLogout} className={styles.logout}>
+      <Button
+        variant="outlined"
+        onClick={handleLogout}
+        className={styles.logout}
+      >
         Log out
       </Button>
-      <Button variant="contained" onClick={handleReset} className={styles.reset}>
+      <Button
+        variant="contained"
+        onClick={handleReset}
+        className={styles.reset}
+      >
         Reset Data
       </Button>
     </div>
   );
 }
-
-export default Account;

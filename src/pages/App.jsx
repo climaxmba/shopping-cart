@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { HomeButton } from "../components/ctaButtons/CTAButtons";
@@ -16,6 +15,7 @@ import expressDelivery640 from "../assets/expressDelivery/expressDelivery640.jpg
 import expressDelivery1280 from "../assets/expressDelivery/expressDelivery1280.jpg";
 import expressDelivery1920 from "../assets/expressDelivery/expressDelivery1920.jpg";
 
+import PropTypes from "prop-types";
 import styles from "./app.module.scss";
 
 function SlideItem({ para, btnText, btnUrl, imageList }) {
@@ -35,6 +35,13 @@ function SlideItem({ para, btnText, btnUrl, imageList }) {
     </div>
   );
 }
+
+SlideItem.propTypes = {
+  para: PropTypes.string,
+  btnText: PropTypes.string,
+  btnUrl: PropTypes.string,
+  imageList: PropTypes.array,
+};
 
 export default function App() {
   const slides = [

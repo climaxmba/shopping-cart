@@ -1,8 +1,9 @@
-/* eslint-disable react/prop-types */
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { ShopItemHorizontal } from "../../components/shopItem/ShopItem";
+
+import PropTypes from "prop-types";
 import styles from "./cart.module.scss";
 
 export default function Cart() {
@@ -73,3 +74,7 @@ function CartList({ products }) {
     </div>
   );
 }
+
+CartList.propTypes = {
+  products: PropTypes.array,
+};

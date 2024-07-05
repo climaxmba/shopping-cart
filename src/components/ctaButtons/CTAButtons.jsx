@@ -1,8 +1,3 @@
-/* eslint-disable react/prop-types */
-import Icon from "@mdi/react";
-import { mdiHeart, mdiHeartOutline, mdiMinus, mdiPlus } from "@mdi/js";
-import styles from "./ctaButtons.module.scss";
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItem,
@@ -11,6 +6,11 @@ import {
   like,
   unLike,
 } from "../../_redux/store";
+import Icon from "@mdi/react";
+import { mdiHeart, mdiHeartOutline, mdiMinus, mdiPlus } from "@mdi/js";
+
+import PropTypes from "prop-types";
+import styles from "./ctaButtons.module.scss";
 
 export default function CTAButtons({ id, title, price, image }) {
   const dispatch = useDispatch();
@@ -39,6 +39,13 @@ export default function CTAButtons({ id, title, price, image }) {
   );
 }
 
+CTAButtons.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  price: PropTypes.string,
+  image: PropTypes.string,
+};
+
 export function AddToCart({ id, title, price, image }) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.value);
@@ -63,13 +70,21 @@ export function AddToCart({ id, title, price, image }) {
     <>
       {item ? (
         <div className={styles.cartQuantityContainer}>
-          <button title="Decrease Quantity" onClick={handleDecrement} tabIndex={0}>
+          <button
+            title="Decrease Quantity"
+            onClick={handleDecrement}
+            tabIndex={0}
+          >
             <Icon size={1} path={mdiMinus} color="white" />
           </button>
           <span title="Item Quantity" className={styles.quantityText}>
             {item.quantity}
           </span>
-          <button title="Increase Quantity" onClick={handleIncrement} tabIndex={0}>
+          <button
+            title="Increase Quantity"
+            onClick={handleIncrement}
+            tabIndex={0}
+          >
             <Icon size={1} path={mdiPlus} color="white" />
           </button>
         </div>
@@ -87,6 +102,13 @@ export function AddToCart({ id, title, price, image }) {
   );
 }
 
+AddToCart.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  price: PropTypes.string,
+  image: PropTypes.string,
+};
+
 export function HomeButton({ text }) {
   return (
     <button type="button" className={styles.homeButton}>
@@ -94,3 +116,7 @@ export function HomeButton({ text }) {
     </button>
   );
 }
+
+HomeButton.propTypes = {
+  text: PropTypes.string,
+};

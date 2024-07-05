@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -11,11 +10,11 @@ import {
 import { Button } from "@mui/material";
 import Icon from "@mdi/react";
 import { mdiArrowLeftThin, mdiCurrencyUsd, mdiMapMarkerOutline } from "@mdi/js";
-
 import ProductsTable from "../../components/productsTable/ProductTable";
 import Stepper from "../../components/stepper/Stepper";
 import ModalCheckout from "../../components/modalCheckout/ModalCheckout";
 
+import PropTypes from "prop-types";
 import styles from "./checkout.module.scss";
 
 export default function Checkout() {
@@ -125,6 +124,11 @@ function PreviousButton({ onClick, disabled }) {
   );
 }
 
+PreviousButton.propTypes = {
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+};
+
 function Billing({ next }) {
   const options = useSelector((state) => state.checkout.billing.options);
   const dispatch = useDispatch();
@@ -171,6 +175,10 @@ function Billing({ next }) {
     </div>
   );
 }
+
+Billing.propTypes = {
+  next: PropTypes.func,
+};
 
 function Shipping({ next }) {
   const address = useSelector((state) => state.checkout.shipping.address);
@@ -237,6 +245,10 @@ function Shipping({ next }) {
   );
 }
 
+Shipping.propTypes = {
+  next: PropTypes.func,
+};
+
 function Summary({ next }) {
   const shippingAddress = useSelector(
     (state) => state.checkout.shipping.address
@@ -301,3 +313,7 @@ function Summary({ next }) {
     </div>
   );
 }
+
+Summary.propTypes = {
+  next: PropTypes.func,
+};

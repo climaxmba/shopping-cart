@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import {
   Table,
   TableBody,
@@ -8,6 +7,8 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+
+import PropTypes from "prop-types";
 import styles from "./productTable.module.scss";
 
 export default function ProductsTable({
@@ -74,3 +75,9 @@ export default function ProductsTable({
     </TableContainer>
   );
 }
+
+ProductsTable.propTypes = {
+  products: PropTypes.array,
+  totalAmount: PropTypes.string,
+  includeShipping: PropTypes.bool,
+};

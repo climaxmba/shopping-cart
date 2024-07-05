@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import { Outlet, useParams } from "react-router-dom";
-
-import storeAPI from "../../../modules/storeAPI";
-import styles from "./categoryProducts.module.scss";
 import ProductsList from "../../../components/productsList/ProductsList";
+import storeAPI from "../../../modules/storeAPI";
+import PropTypes from "prop-types";
+import styles from "./categoryProducts.module.scss";
 
 export default function CategoryProducts({ category }) {
   const { productId } = useParams();
@@ -20,3 +19,7 @@ export default function CategoryProducts({ category }) {
     </div>
   );
 }
+
+CategoryProducts.propTypes = {
+  category: PropTypes.string,
+};

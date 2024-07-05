@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Icon from "@mdi/react";
 import { mdiCart, mdiCartOutline } from "@mdi/js";
 import Badge from "@mui/material/Badge";
 
+import PropTypes from "prop-types";
 import logo from "../../assets/logo.svg";
 import logoText from "../../assets/logoText.svg";
 import styles from "./navbar.module.scss";
@@ -45,3 +45,8 @@ export default function NavBar({ setMenuOpen, menuOpen }) {
     </nav>
   );
 }
+
+NavBar.propTypes = {
+  setMenuOpen: PropTypes.func,
+  menuOpen: PropTypes.bool,
+};

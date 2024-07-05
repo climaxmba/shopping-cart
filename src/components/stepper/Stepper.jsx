@@ -1,6 +1,7 @@
-/* eslint-disable react/prop-types */
 import Icon from "@mdi/react";
 import { mdiCheck, mdiCircle } from "@mdi/js";
+
+import PropTypes from "prop-types";
 import styles from "./stepper.module.scss";
 
 export default function Stepper({ pages }) {
@@ -39,7 +40,14 @@ export default function Stepper({ pages }) {
   );
 }
 
+Stepper.propTypes = {
+  pages: PropTypes.array,
+};
+
 /** This allows the element `<></>` to recieve props like `key` */
 function EmptyElement({ children }) {
   return <>{children}</>;
 }
+EmptyElement.propTypes = {
+  children: PropTypes.node,
+};

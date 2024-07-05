@@ -1,10 +1,11 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import styles from "./productsList.module.scss";
 import ShopItem from "../shopItem/ShopItem";
 import Loading, { LoadingError } from "../loading/Loading";
+
+import PropTypes from "prop-types";
+import styles from "./productsList.module.scss";
 
 /** Requires container style: `{container: products-sectn / inline-size;}` */
 export default function ProductsList({ getProducts, hasProductId = false }) {
@@ -52,3 +53,8 @@ export default function ProductsList({ getProducts, hasProductId = false }) {
     </>
   );
 }
+
+ProductsList.propTypes = {
+  getProducts: PropTypes.func,
+  hasProductId: PropTypes.bool,
+};

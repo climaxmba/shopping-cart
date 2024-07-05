@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal, Box, Button } from "@mui/material";
 import Icon from "@mdi/react";
 import { mdiClose } from "@mdi/js";
 
+import PropTypes from "prop-types";
 import styles from "./modalCheckout.module.scss";
 
 export default function ModalCheckout({ open = false, onClose }) {
@@ -87,3 +87,8 @@ export default function ModalCheckout({ open = false, onClose }) {
     </Modal>
   );
 }
+
+ModalCheckout.propTypes = {
+  open: PropTypes.bool,
+  onClose: PropTypes.func,
+};
