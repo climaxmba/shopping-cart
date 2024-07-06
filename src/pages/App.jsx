@@ -28,6 +28,7 @@ function SlideItem({ para, btnText, btnUrl, imageList }) {
           alt=""
         />
       </div>
+      <div className={styles.offset}></div>
       <p className={styles.text}>{para}</p>
       <Link to={btnUrl}>
         <HomeButton text={btnText} />

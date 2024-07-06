@@ -2,7 +2,8 @@ $theme-blue: blueviolet;
 $theme-black: #303030;
 
 :root {
-  font-family: "Noto Sans Display", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans Display", Inter, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -57,17 +58,22 @@ main {
 
 #menu-sectn {
   flex: 0 0 250px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
   padding: 1rem;
   font-size: x-large;
   background-color: white;
+
+  #navlink-container {
+    display: flex;
+    gap: 1.6rem;
+    flex-direction: column;
+    position: fixed;
+  }
 
   .navlink {
     display: flex;
     gap: 8px;
     align-items: center;
+    font-weight: 600;
     color: $theme-black;
     padding: 8px 12px;
     border-radius: 8px;
@@ -95,9 +101,6 @@ main {
 @media screen and (width < 680px) {
   #menu-sectn {
     font-size: small;
-    justify-content: space-evenly;
-    flex-direction: row;
-    gap: 1rem;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -105,6 +108,13 @@ main {
     z-index: 2;
     box-sizing: border-box;
     padding: 0.6rem;
+
+    #navlink-container {
+      gap: 1rem;
+      justify-content: space-evenly;
+      flex-direction: row;
+      position: unset;
+    }
 
     .navlink {
       flex-direction: column;

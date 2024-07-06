@@ -23,7 +23,7 @@ function Menu() {
   const matches = useMediaQuery("(max-width:680px)");
 
   return (
-    <>
+    <div id="navlink-container">
       <NavLink className="navlink" to="/">
         {({ isActive }) => (
           <>
@@ -73,7 +73,7 @@ function Menu() {
           </>
         )}
       </NavLink>
-    </>
+    </div>
   );
 }
 
