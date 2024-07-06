@@ -12,18 +12,18 @@ import { mdiHeart, mdiHeartOutline, mdiMinus, mdiPlus } from "@mdi/js";
 import PropTypes from "prop-types";
 import styles from "./ctaButtons.module.scss";
 
-export default function CTAButtons({ id, title, price, image }) {
+export default function CTAButtons({ id, title, price, image, rate }) {
   const dispatch = useDispatch();
-  const liked = useSelector((state) => state.likes.value).includes(id);
+  const liked = useSelector((state) => state.likes.value).find(like => like.id === id);
 
   const handleLike = (e) => {
-    dispatch(liked ? unLike(id) : like(id));
+    dispatch(liked ? unLike(id) : like({id, title, price, image, rate}));
     e.stopPropagation();
   };
 
   return (
     <div className={styles.ctaContainer}>
-      <AddToCart id={id} title={title} price={price} image={image} />
+      <AddToCart id={id} title={title} price={price} image={image} rate={rate} />
       <span
         title={liked ? "Unlike" : "Like"}
         className={styles.likeContainer}
@@ -44,15 +44,16 @@ CTAButtons.propTypes = {
   title: PropTypes.string,
   price: PropTypes.string,
   image: PropTypes.string,
+  rate: PropTypes.number,
 };
 
-export function AddToCart({ id, title, price, image }) {
+export function AddToCart({ id, title, price, image, rate }) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.value);
   const [item] = cart.filter((cartItem) => cartItem.id === id);
 
   const handleAddToCart = (e) => {
-    dispatch(addItem({ id, title, price, quantity: 1, image }));
+    dispatch(addItem({ id, title, price, quantity: 1, image, rate }));
     e.stopPropagation();
   };
 
@@ -107,6 +108,7 @@ AddToCart.propTypes = {
   title: PropTypes.string,
   price: PropTypes.string,
   image: PropTypes.string,
+  rate: PropTypes.number,
 };
 
 export function HomeButton({ text }) {

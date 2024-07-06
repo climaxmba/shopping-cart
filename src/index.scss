@@ -24,7 +24,7 @@ a {
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: 300px;
   min-height: 100vh;
 }
 
@@ -94,7 +94,7 @@ main {
 
 @media screen and (width < 680px) {
   #menu-sectn {
-    font-size: medium;
+    font-size: small;
     justify-content: space-evenly;
     flex-direction: row;
     gap: 1rem;
@@ -103,6 +103,8 @@ main {
     width: 100%;
     box-shadow: 0 -1px 3px 2px #00000020;
     z-index: 2;
+    box-sizing: border-box;
+    padding: 0.6rem;
 
     .navlink {
       flex-direction: column;
@@ -114,6 +116,10 @@ main {
       &:hover {
         background-color: unset;
         color: unset;
+      }
+
+      svg {
+        width: 1.35rem;
       }
     }
   }

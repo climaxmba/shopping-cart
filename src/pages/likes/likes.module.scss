@@ -1,0 +1,19 @@
+$theme-green: limegreen;
+
+.container {
+  padding: 1rem;
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.button {
+  background-color: $theme-green !important;
+
+  &:hover {
+    background-color: darken($color: $theme-green, $amount: 4) !important;
+  }
+}

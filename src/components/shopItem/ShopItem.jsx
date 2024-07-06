@@ -24,7 +24,7 @@ export default function ShopItem({
   const handleLike = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    dispatch(liked ? unLike(id) : like(id));
+    dispatch(liked ? unLike(id) : like({id, title, price, image, rate: rating.rate}));
   };
 
   return (
@@ -68,7 +68,7 @@ ShopItem.propTypes = {
   liked: PropTypes.bool,
 };
 
-export function ShopItemDetailed({ id, image, title, price }) {
+export function ShopItemDetailed({ id, image, title, price, rate }) {
   return (
     <div className={styles.containerDetailed}>
       <div className={styles.imgContainer}>
@@ -77,7 +77,7 @@ export function ShopItemDetailed({ id, image, title, price }) {
       <div>
         <div className={styles.productName}>{title}</div>
         <div className={styles.price}>{`${currency}${price}`}</div>
-        <CTAButtons id={id} title={title} price={price} image={image} />
+        <CTAButtons id={id} title={title} price={price} image={image} rate={rate} />
       </div>
     </div>
   );
@@ -88,9 +88,10 @@ ShopItemDetailed.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
   price: PropTypes.string,
+  rate: PropTypes.number,
 };
 
-export function ShopItemHorizontal({ id, image, title, price }) {
+export function ShopItemHorizontal({ id, image, title, price, rate }) {
   return (
     <div className={styles.containerHorizontal}>
       <div className={styles.imgContainer}>
@@ -101,7 +102,7 @@ export function ShopItemHorizontal({ id, image, title, price }) {
           {title}
         </div>
         <div className={styles.price}>{`${currency}${price}`}</div>
-        <CTAButtons id={id} title={title} price={price} image={image} />
+        <CTAButtons id={id} title={title} price={price} image={image} rate={rate} />
       </div>
     </div>
   );
@@ -112,4 +113,5 @@ ShopItemHorizontal.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
   price: PropTypes.string,
+  rate: PropTypes.number,
 };

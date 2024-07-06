@@ -8,6 +8,8 @@ import {
   mdiAccountCheck,
   mdiAccountCheckOutline,
   mdiAccountOutline,
+  mdiHeart,
+  mdiHeartOutline,
   mdiHome,
   mdiHomeOutline,
   mdiShape,
@@ -30,6 +32,13 @@ function Menu() {
         {({ isActive }) => (
           <>
             <Icon path={isActive ? mdiShape : mdiShapeOutline} /> Categories
+          </>
+        )}
+      </NavLink>
+      <NavLink className="navlink" to="/likes">
+        {({ isActive }) => (
+          <>
+            <Icon path={isActive ? mdiHeart : mdiHeartOutline} /> Likes
           </>
         )}
       </NavLink>

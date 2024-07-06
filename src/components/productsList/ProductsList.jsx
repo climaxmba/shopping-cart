@@ -45,7 +45,7 @@ export default function ProductsList({ getProducts, hasProductId = false }) {
               price={product.price}
               image={product.image}
               rating={product.rating}
-              liked={likes.includes(product.id)}
+              liked={likes.find(like => like.id === product.id) && true}
             />
           ))}
         </div>

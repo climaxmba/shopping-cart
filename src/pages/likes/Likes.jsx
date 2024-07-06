@@ -1,37 +1,24 @@
 import { useSelector } from "react-redux";
+import styles from "./likes.module.scss";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { ShopItemHorizontal } from "../../components/shopItem/ShopItem";
-
 import PropTypes from "prop-types";
-import styles from "./cart.module.scss";
 
-export default function Cart() {
-  const cart = useSelector((state) => state.cart.value);
+export default function Likes() {
+  const likes = useSelector((state) => state.likes.value);
   const navigate = useNavigate();
 
   return (
     <div className={styles.container}>
-      <h2>Cart</h2>
-      {cart.length ? (
+      <h2>My favourite products</h2>
+      {likes.length ? (
         <>
-          <CartList cart={cart} />
-          <Button
-            variant="contained"
-            sx={{
-              margin: "1.5rem 0",
-              textTransform: "none",
-              ":focus": { outline: "none" },
-            }}
-            onClick={() => navigate("/checkout")}
-            className={styles.button}
-          >
-            Proceed to Checkout
-          </Button>
+          <LikesList likes={likes} />
         </>
       ) : (
         <>
-          <p>Your Cart is empty! </p>
+          <p>Noting here yet!</p>
           <Button
             variant="contained"
             sx={{
@@ -42,7 +29,7 @@ export default function Cart() {
             onClick={() => navigate("/products")}
             className={styles.button}
           >
-            Start Shopping
+            Find Products
           </Button>
         </>
       )}
@@ -50,11 +37,11 @@ export default function Cart() {
   );
 }
 
-function CartList({ cart }) {
+function LikesList({ likes }) {
   return (
     <div className={styles.cartList}>
-      {cart.map((product) => (
-        <ShopItemHorizontal
+      {likes.map((product) => (
+        <ShopItemHorizontal 
           key={product.id}
           id={product.id}
           image={product.image}
@@ -67,6 +54,6 @@ function CartList({ cart }) {
   );
 }
 
-CartList.propTypes = {
-  cart: PropTypes.array,
+LikesList.propTypes = {
+  likes: PropTypes.array,
 };

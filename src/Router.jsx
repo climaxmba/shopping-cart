@@ -11,6 +11,7 @@ import ErrorPage from "./errorPage/ErrorPage";
 import Products from "./pages/products/Products";
 import ProductDetails from "./components/productDetails/ProductDetails";
 import Checkout from "./pages/checkout/Checkout";
+import Likes from "./pages/likes/Likes";
 import RootLayout from "./RootLayout";
 
 import "./index.scss";
@@ -98,6 +99,14 @@ const Router = () => {
       element: (
         <RootLayout menuStates={menuStates}>
           <Checkout />
+        </RootLayout>
+      ),
+    },
+    {
+      path: "likes",
+      element: (
+        <RootLayout menuStates={menuStates}>
+          <Likes />
         </RootLayout>
       ),
     },

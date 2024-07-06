@@ -41,6 +41,7 @@ export default function ProductDetails() {
             image={product.image}
             title={product.title}
             price={product.price}
+            rate={product.rating.rate}
           />
           <Description description={product.description} />
           <Rating rating={product.rating.rate} count={product.rating.count} />
