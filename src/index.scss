@@ -68,7 +68,7 @@ main {
     display: flex;
     gap: 8px;
     align-items: center;
-    color: currentColor;
+    color: $theme-black;
     padding: 8px 12px;
     border-radius: 8px;
     animation: move 0.5s ease-in-out;

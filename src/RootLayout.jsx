@@ -15,9 +15,12 @@ import {
   mdiShape,
   mdiShapeOutline,
 } from "@mdi/js";
+import { Badge, useMediaQuery } from "@mui/material";
 
 function Menu() {
   const userName = useSelector((state) => state.user.value.userName);
+  const likesLength = useSelector((state) => state.likes.value.length);
+  const matches = useMediaQuery("(max-width:680px)");
 
   return (
     <>
@@ -35,11 +38,21 @@ function Menu() {
           </>
         )}
       </NavLink>
-      <NavLink className="navlink" to="/likes">
+      <NavLink to="/likes">
         {({ isActive }) => (
-          <>
+          <Badge
+            className="navlink"
+            badgeContent={likesLength || null}
+            sx={{
+              ".MuiBadge-badge": {
+                bgcolor: "#303030",
+                color: "white",
+                position: `${matches ? "absolute" : "unset"}`,
+              },
+            }}
+          >
             <Icon path={isActive ? mdiHeart : mdiHeartOutline} /> Likes
-          </>
+          </Badge>
         )}
       </NavLink>
       <NavLink className="navlink" to="/account">
