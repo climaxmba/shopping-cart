@@ -1,6 +1,6 @@
 const storeAPI = (() => {
   async function _resource(URL) {
-    const response = await fetch(URL);
+    const response = await fetch(URL, { mode: "cors" });
     if (!response.ok) throw new Error(response.status);
     return await response.json();
   }
