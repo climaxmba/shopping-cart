@@ -1,6 +1,6 @@
 # Shopping Cart
 An eCommerce store with React and FakeStore API.
-> Project from [The Odin Project's React Course](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart)
+> From [The Odin Project's React Course](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart)
 
 ## ✨ Features
 - Basic checkout interface.
