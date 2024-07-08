@@ -1,3 +1,5 @@
+$carousel-height: 80vh;
+
 .carousel {
   width: 100%;
 }
@@ -9,7 +11,7 @@
   gap: 0.4rem;
   position: relative;
   padding: 2rem;
-  height: 80vh;
+  height: $carousel-height;
 
   .offset {
     flex: 1;
@@ -103,6 +105,13 @@
         transform: scale(1.2);
       }
     }
+  }
+}
+
+// Media query match that sets the menu at the bottom of the screen
+@media screen and (width < 680px) {
+  .ctaContainer {
+    height: calc($carousel-height - 50px);
   }
 }
 
