@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { useState } from "react";
 import { store } from "./_redux/store";
 
-import App from "./pages/App";
+import Home from "./pages/Home";
 import Account from "./pages/account/Account";
 import Cart from "./pages/cart/Cart";
 import Categories from "./pages/categories/Categories";
@@ -29,7 +29,7 @@ const Router = () => {
       path: "/",
       element: (
         <RootLayout menuStates={menuStates}>
-          <App />
+          <Home />
         </RootLayout>
       ),
       errorElement: <ErrorPage />,

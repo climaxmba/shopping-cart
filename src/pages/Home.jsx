@@ -16,7 +16,7 @@ import expressDelivery1280 from "../assets/expressDelivery/expressDelivery1280.j
 import expressDelivery1920 from "../assets/expressDelivery/expressDelivery1920.jpg";
 
 import PropTypes from "prop-types";
-import styles from "./app.module.scss";
+import styles from "./home.module.scss";
 
 function SlideItem({ para, btnText, btnUrl, imageList }) {
   return (
@@ -44,7 +44,7 @@ SlideItem.propTypes = {
   imageList: PropTypes.array,
 };
 
-export default function App() {
+export default function Home() {
   const slides = [
     {
       para: "We offer the best products online",
