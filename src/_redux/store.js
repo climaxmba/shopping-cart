@@ -5,10 +5,21 @@ import cartSlice from "./slices/cart";
 import likesSlice from "./slices/likes";
 import checkoutSlice from "./slices/checkout";
 
-export const { login, logout } = userSlice.actions;
-export const { addItem, incrementItemQuantity, decrementItemQuantity, resetCart } = cartSlice.actions;
+export const { login, logout, setUserName, setEmail, setPhone, setAddress } =
+  userSlice.actions;
+export const {
+  addItem,
+  incrementItemQuantity,
+  decrementItemQuantity,
+  resetCart,
+} = cartSlice.actions;
 export const { like, unLike } = likesSlice.actions;
-export const { setBillingOptions, setShippingAddress, setShippingOptions, resetCheckout} = checkoutSlice.actions
+export const {
+  setBillingOptions,
+  setShippingAddress,
+  setShippingOptions,
+  resetCheckout,
+} = checkoutSlice.actions;
 
 export const store = configureStore({
   reducer: {

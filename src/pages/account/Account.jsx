@@ -1,7 +1,14 @@
 import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "../../_redux/store";
+import {
+  login,
+  logout,
+  setAddress,
+  setEmail,
+  setPhone,
+  setUserName,
+} from "../../_redux/store";
 import { Button } from "@mui/material";
 
 import PropTypes from "prop-types";
@@ -158,6 +165,7 @@ function Details() {
   };
 
   const handleReset = () => {
+    dispatch(logout());
     localStorage.clear();
     location.assign(location.origin);
   };
@@ -173,22 +181,42 @@ function Details() {
 
       <div className={styles.field}>
         <div>Username</div>
-        <div>{userName || none}</div>
+        <div
+          contentEditable
+          onBlur={(e) => dispatch(setUserName(e.target.textContent))}
+        >
+          {userName || none}
+        </div>
       </div>
 
       <div className={styles.field}>
         <div>Email</div>
-        <div>{email || none}</div>
+        <div
+          contentEditable
+          onBlur={(e) => dispatch(setEmail(e.target.textContent))}
+        >
+          {email || none}
+        </div>
       </div>
 
       <div className={styles.field}>
         <div>Phone number</div>
-        <div>{phone || none}</div>
+        <div
+          contentEditable
+          onBlur={(e) => dispatch(setPhone(e.target.textContent))}
+        >
+          {phone || none}
+        </div>
       </div>
 
       <div className={styles.field}>
         <div>Address</div>
-        <div>{address || none}</div>
+        <div
+          contentEditable
+          onBlur={(e) => dispatch(setAddress(e.target.textContent))}
+        >
+          {address || none}
+        </div>
       </div>
 
       <Button

@@ -23,6 +23,22 @@ const userSlice = createSlice({
         address: "",
       });
     },
+    setUserName: (state, action) => {
+      state.value.userName = action.payload;
+      storage.setUser({ ...state.value, userName: action.payload });
+    },
+    setEmail: (state, action) => {
+      state.value.email = action.payload;
+      storage.setUser({ ...state.value, email: action.payload });
+    },
+    setPhone: (state, action) => {
+      state.value.phone = action.payload;
+      storage.setUser({ ...state.value, phone: action.payload });
+    },
+    setAddress: (state, action) => {
+      state.value.address = action.payload;
+      storage.setUser({ ...state.value, address: action.payload });
+    },
   },
 });
 
