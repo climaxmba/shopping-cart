@@ -5,7 +5,7 @@ import cartSlice from "./slices/cart";
 import likesSlice from "./slices/likes";
 import checkoutSlice from "./slices/checkout";
 
-export const { login, logout, setUserName, setEmail, setPhone, setAddress } =
+export const { login, logout, setUserName, setEmail, setPhone } =
   userSlice.actions;
 export const {
   addItem,

@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   login,
   logout,
-  setAddress,
   setEmail,
   setPhone,
   setUserName,
@@ -23,14 +22,13 @@ function SignUp() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    userName && dispatch(login({ userName, email, phone, address }));
+    userName && dispatch(login({ userName, email, phone }));
     navigate("/");
   };
 
@@ -67,17 +65,6 @@ function SignUp() {
           id="signupPhone"
           defaultValue={phone}
           onChange={(e) => setPhone(e.target.value)}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="signupAddress">Address:</label>
-        <input
-          type="text"
-          name="signupAddress"
-          id="signupAddress"
-          defaultValue={address}
-          onChange={(e) => setAddress(e.target.value)}
         />
       </div>
 
@@ -151,9 +138,7 @@ Auth.propTypes = {
 };
 
 function Details() {
-  const { userName, email, phone, address } = useSelector(
-    (state) => state.user.value
-  );
+  const { userName, email, phone } = useSelector((state) => state.user.value);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -206,16 +191,6 @@ function Details() {
           onBlur={(e) => dispatch(setPhone(e.target.textContent))}
         >
           {phone || none}
-        </div>
-      </div>
-
-      <div className={styles.field}>
-        <div>Address</div>
-        <div
-          contentEditable
-          onBlur={(e) => dispatch(setAddress(e.target.textContent))}
-        >
-          {address || none}
         </div>
       </div>
 

@@ -6,7 +6,6 @@ const storage = (() => {
           userName: "",
           email: "",
           phone: "",
-          address: "",
         }
       );
     } catch (error) {

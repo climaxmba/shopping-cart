@@ -20,7 +20,6 @@ const userSlice = createSlice({
         userName: "",
         email: "",
         phone: "",
-        address: "",
       });
     },
     setUserName: (state, action) => {
@@ -34,10 +33,6 @@ const userSlice = createSlice({
     setPhone: (state, action) => {
       state.value.phone = action.payload;
       storage.setUser({ ...state.value, phone: action.payload });
-    },
-    setAddress: (state, action) => {
-      state.value.address = action.payload;
-      storage.setUser({ ...state.value, address: action.payload });
     },
   },
 });
