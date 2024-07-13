@@ -22,18 +22,6 @@ const userSlice = createSlice({
         phone: "",
       });
     },
-    setUserName: (state, action) => {
-      state.value.userName = action.payload;
-      storage.setUser({ ...state.value, userName: action.payload });
-    },
-    setEmail: (state, action) => {
-      state.value.email = action.payload;
-      storage.setUser({ ...state.value, email: action.payload });
-    },
-    setPhone: (state, action) => {
-      state.value.phone = action.payload;
-      storage.setUser({ ...state.value, phone: action.payload });
-    },
   },
 });
 

@@ -1,5 +1,7 @@
 $border-spacing: 1rem 2rem;
+$max-width: 320px;
 $theme-black: #303030;
+$theme-blue: blueviolet;
 $theme-darkred: lighten($color: $theme-black, $amount: 4);
 
 @mixin flex-col {
@@ -23,6 +25,31 @@ $theme-darkred: lighten($color: $theme-black, $amount: 4);
 }
 
 /* Details */
+.editContainer {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  form {
+    @include flex-col();
+    gap: 1rem;
+    min-width: 280px;
+
+    & > div {
+      @include flex-col();
+      gap: 0.4rem;
+    }
+
+    input {
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+      border-bottom: 2px solid;
+    }
+  }
+}
+
 .details {
   @include flex-col();
   gap: 1rem;
@@ -47,9 +74,28 @@ $theme-darkred: lighten($color: $theme-black, $amount: 4);
   }
 }
 
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  max-width: $max-width;
+
+  & > * {
+    flex: 1;
+  }
+}
+
+.edit {
+  @include button();
+  color: $theme-blue !important;
+  background-color: lighten($color: $theme-blue, $amount: 40) !important;
+
+  &:hover {
+    background-color: lighten($color: $theme-blue, $amount: 38) !important;
+  }
+}
+
 .logout {
   @include button();
-  max-width: 320px !important;
   color: $theme-black !important;
   border-color: $theme-black !important;
 
@@ -60,7 +106,7 @@ $theme-darkred: lighten($color: $theme-black, $amount: 4);
 
 .reset {
   @include button();
-  max-width: 320px !important;
+  max-width: $max-width !important;
   background-color: $theme-black !important;
   
   &:hover {
@@ -79,7 +125,7 @@ $theme-darkred: lighten($color: $theme-black, $amount: 4);
   form {
     @include flex-col();
     gap: 1rem;
-    min-width: 300px;
+    min-width: 280px;
 
     & > div {
       @include flex-col();
