@@ -84,11 +84,11 @@ export default function Home() {
         interval={8000}
         transitionTime={1000}
         statusFormatter={(currNum, total) => `${currNum} / ${total}`}
-        swipeable={false}
         showIndicators={false}
         showThumbs={false}
         autoPlay
         infiniteLoop
+        preventMovementUntilSwipeScrollTolerance
         className={styles.carousel}
       >
         {slides.map((slide) => (
