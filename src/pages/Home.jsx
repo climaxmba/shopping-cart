@@ -86,6 +86,7 @@ export default function Home() {
         statusFormatter={(currNum, total) => `${currNum} / ${total}`}
         showIndicators={false}
         showThumbs={false}
+        swipeScrollTolerance={25}
         autoPlay
         infiniteLoop
         preventMovementUntilSwipeScrollTolerance
