@@ -111,9 +111,9 @@ AddToCart.propTypes = {
   rate: PropTypes.number,
 };
 
-export function HomeButton({ text }) {
+export function HomeButton({ text, onClick }) {
   return (
-    <button type="button" className={styles.homeButton}>
+    <button type="button" onClick={onClick} className={styles.homeButton}>
       {text}
     </button>
   );
@@ -121,4 +121,5 @@ export function HomeButton({ text }) {
 
 HomeButton.propTypes = {
   text: PropTypes.string,
+  onClick: PropTypes.func,
 };

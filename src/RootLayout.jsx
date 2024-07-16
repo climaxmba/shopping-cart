@@ -16,29 +16,31 @@ import {
   mdiShapeOutline,
 } from "@mdi/js";
 import { Badge, useMediaQuery } from "@mui/material";
+import PropTypes from "prop-types";
 
-function Menu() {
+function Menu({ isOpen = false }) {
   const userName = useSelector((state) => state.user.value.userName);
   const likesLength = useSelector((state) => state.likes.value.length);
   const matches = useMediaQuery("(max-width:680px)");
+  const tabIndex = isOpen ? 0 : -1;
 
   return (
     <div id="navlink-container">
-      <NavLink className="navlink" to="/">
+      <NavLink className="navlink" to="/" tabIndex={tabIndex}>
         {({ isActive }) => (
           <>
             <Icon path={isActive ? mdiHome : mdiHomeOutline} /> Home
           </>
         )}
       </NavLink>
-      <NavLink className="navlink" to="/categories">
+      <NavLink className="navlink" to="/categories" tabIndex={tabIndex}>
         {({ isActive }) => (
           <>
             <Icon path={isActive ? mdiShape : mdiShapeOutline} /> Categories
           </>
         )}
       </NavLink>
-      <NavLink to="/likes">
+      <NavLink to="/likes" tabIndex={tabIndex}>
         {({ isActive }) => (
           <Badge
             className="navlink"
@@ -55,7 +57,7 @@ function Menu() {
           </Badge>
         )}
       </NavLink>
-      <NavLink className="navlink" to="/account">
+      <NavLink className="navlink" to="/account" tabIndex={tabIndex}>
         {({ isActive }) => (
           <>
             <Icon
@@ -77,6 +79,10 @@ function Menu() {
   );
 }
 
+Menu.propTypes = {
+  isOpen: PropTypes.bool,
+};
+
 export default function RootLayout({ children, menuStates }) {
   return (
     <>
@@ -87,7 +93,7 @@ export default function RootLayout({ children, menuStates }) {
       <main>
         {menuStates.menuOpen && (
           <section id="menu-sectn">
-            <Menu />
+            <Menu isOpen={menuStates.menuOpen} />
           </section>
         )}
         <section id="outlet-sectn">{children}</section>

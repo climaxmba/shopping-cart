@@ -1,7 +1,7 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { HomeButton } from "../components/ctaButtons/CTAButtons";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import shopNow640 from "../assets/shopNow/shopNow640.jpg";
 import shopNow1280 from "../assets/shopNow/shopNow1280.jpg";
@@ -19,6 +19,8 @@ import PropTypes from "prop-types";
 import styles from "./home.module.scss";
 
 function SlideItem({ para, btnText, btnUrl, imageList }) {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.ctaContainer}>
       <div className={styles.imageContainer}>
@@ -30,9 +32,7 @@ function SlideItem({ para, btnText, btnUrl, imageList }) {
       </div>
       <div className={styles.offset}></div>
       <p className={styles.text}>{para}</p>
-      <Link to={btnUrl}>
-        <HomeButton text={btnText} />
-      </Link>
+      <HomeButton text={btnText} onClick={() => navigate(btnUrl)} />
     </div>
   );
 }
